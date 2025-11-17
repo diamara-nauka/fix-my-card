@@ -1,82 +1,85 @@
-import { createSignal, For } from 'solid-js'
+import { createSignal } from 'solid-js'
 
 export default function Formulaire() {
-  const [files, setFiles] = createSignal([])
   const max = 5
+  const [images, setImages] = createSignal([])
 
-  const addImage = () => {
-    if (files().length >= max) return
+  const addImage = (file) => {
+    const url = URL.createObjectURL(file)
 
-    const input = document.createElement('input')
-    input.type = 'file'
-    input.accept = 'image/*'
+    setImages((prev) => [...prev, { file, url }])
 
-    input.onchange = () => {
-      if (!input.files || input.files.length === 0) return
-
-      const file = input.files[0]
-      const url = URL.createObjectURL(file)
-
-      setFiles([...files(), { file, url }])
-    }
-
-    input.click()
+    const domInputs = document.querySelectorAll(
+      '#image-inputs input[type=file]'
+    )
+    domInputs[images().length].files = createFileList([file])
   }
 
-  const removeImage = (index) => {
-    const list = [...files()]
-    list.splice(index, 1)
-    setFiles(list)
+  const createFileList = (files) => {
+    const dt = new DataTransfer()
+    files.forEach((f) => dt.items.add(f))
+    return dt.files
   }
+
+  const handleSelect = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+    addImage(file)
+  }
+
+  const removeImage = (i) => {
+    // 1) Enlever dans Solid
+    setImages((prev) => prev.filter((_, idx) => idx !== i))
+
+    // 2) Vider le bon input caché
+    const inputs = document.querySelectorAll('#image-inputs input[type=file]')
+    inputs[i].value = ''
+
+    // 3) Re-synchroniser les inputs cachés restants
+    const updated = images()
+    updated.forEach((img, index) => {
+      inputs[index].files = createFileList([img.file])
+    })
+  }
+
+  let fileInput
 
   return (
-    <div>
-      <label class="block font-semibold mb-2">Images (max 5)</label>
+    <div class="mt-6">
+      <label class="block mb-2 font-semibold">Images (max 5)</label>
 
-      <div class="flex flex-wrap gap-4">
-        <For each={files()}>
-          {(item, index) => (
-            <div class="relative w-20 h-20 group">
-              <img
-                src={item.url}
-                class="object-cover w-full h-full rounded-md border"
-              />
-              <input
-                type="file"
-                name={`image_${index()}`}
-                class="hidden"
-                value=""
-                // fichier injecté dans l'input pour Netlify
-                ref={(el) => {
-                  // On recrée un fichier dans cet input (obligatoire pour Netlify)
-                  const dt = new DataTransfer()
-                  dt.items.add(item.file)
-                  el.files = dt.files
-                }}
-              />
+      <div class="flex gap-4">
+        {images().map((img, index) => (
+          <div class="relative w-24 h-24 border rounded bg-gray-50 overflow-hidden">
+            <img src={img.url} class="object-cover w-full h-full" />
+            <button
+              type="button"
+              onClick={() => removeImage(index)}
+              class="absolute top-1 right-1 bg-black/60 text-white text-xs px-1 rounded"
+            >
+              x
+            </button>
+          </div>
+        ))}
 
-              {/* Supprimer */}
-              <button
-                type="button"
-                class="absolute top-0 right-0 bg-black/60 text-white px-1 text-sm opacity-0 group-hover:opacity-100"
-                onClick={() => removeImage(index())}
-              >
-                ×
-              </button>
-            </div>
-          )}
-        </For>
-
-        {files().length < max && (
+        {images().length < max && (
           <button
             type="button"
-            onClick={addImage}
-            class="w-20 h-20 border-2 border-dashed border-gray-400 rounded-md flex items-center justify-center text-3xl hover:bg-gray-100"
+            class="w-24 h-24 border-2 border-dashed rounded flex items-center justify-center text-2xl"
+            onClick={() => fileInput.click()}
           >
             +
           </button>
         )}
       </div>
+
+      <input
+        type="file"
+        accept="image/*"
+        ref={fileInput}
+        class="hidden"
+        onChange={handleSelect}
+      />
     </div>
   )
 }
