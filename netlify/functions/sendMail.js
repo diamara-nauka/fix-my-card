@@ -1,5 +1,6 @@
 import Busboy from 'busboy'
 import nodemailer from 'nodemailer'
+import { lookup as mimeLookup } from 'mime-types'
 
 export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -22,13 +23,19 @@ export const handler = async (event) => {
       fields[fieldname] = value
     })
 
-    busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+    busboy.on('file', (fieldname, file, { filename, encoding, mimetype }) => {
       const chunks = []
       file.on('data', (data) => chunks.push(data))
       file.on('end', () => {
+        const safeFilename = filename || 'unnamed_file'
+        const safeMimeType =
+          mimetype ||
+          mimeLookup(safeFilename) ||
+          'application/octet-stream'
+
         files.push({
-          filename,
-          mimetype,
+          filename: String(safeFilename),
+          mimetype: String(safeMimeType),
           content: Buffer.concat(chunks),
         })
       })
