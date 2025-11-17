@@ -11,7 +11,6 @@ import Formulaire from './images-container'
     method="POST"
     data-netlify="true"
     enctype="multipart/form-data"
-    action="/merci"
     class="space-y-6"
   >
     <input type="hidden" name="form-name" value="contact" />
@@ -57,6 +56,7 @@ import Formulaire from './images-container'
       <input type="file" name="image_4" accept="image/*" />
     </div>
 
+    <input type="hidden" name="redirect" value="/merci" />
 
     <button
       type="submit"
