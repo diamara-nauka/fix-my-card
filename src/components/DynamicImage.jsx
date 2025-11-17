@@ -9,7 +9,6 @@ const supabase = createClient(
 export default function DynamicImage() {
   const [imgSrc, setImgSrc] = createSignal('');
 
-  console.log('bite')
   onMount(async () => {
     const { data, error } = await supabase
       .from('image')
@@ -17,7 +16,6 @@ export default function DynamicImage() {
       .limit(1)
       .single();
 
-    console.log('bite2')
     if (error) {
       console.error(error);
     } else {
