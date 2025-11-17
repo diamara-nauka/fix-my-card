@@ -1,9 +1,19 @@
+---
+import Formulaire from './images-container'
+---
+
 <div class="container mx-auto px-4 py-8 pt-28">
   <h1 class="text-3xl font-bold mb-6">Contactez-moi</h1>
   <p>Je vous ferais parvenir un devis des les plus bref délai</p>
 
-  <!-- Formulaire Netlify Forms -->
-  <form name="contact" method="POST" data-netlify="true" class="space-y-6" action="/merci">
+  <form
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    enctype="multipart/form-data"
+    action="/merci"
+    class="space-y-6"
+  >
     <input type="hidden" name="form-name" value="contact" />
 
     <div>
@@ -38,6 +48,8 @@
         class="w-full px-3 py-2 border border-gray-300 rounded-md resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
       ></textarea>
     </div>
+
+    <Formulaire client:load />
 
     <button
       type="submit"
