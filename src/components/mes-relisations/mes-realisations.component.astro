@@ -73,15 +73,15 @@ const projects = [
       {
         projects.map((project) => (
           <div
+            data-image={project.image}
             data-slot="card"
-            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border overflow-hidden hover:shadow-xl transition-shadow"
+            class="cursor-pointer bg-card text-card-foreground flex flex-col gap-6 rounded-xl border overflow-hidden hover:shadow-xl transition-shadow"
           >
             <div class="relative h-64 overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
-                data-image={project.image}
-                class="w-full h-full object-cover cursor-pointer"
+                class="w-full h-full object-cover"
               />
               <div class="absolute top-4 right-4">
                 <span class="inline-flex items-center justify-center rounded-md px-2 py-0.5 text-white bg-blue-600">
