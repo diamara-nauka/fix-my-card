@@ -1,79 +1,50 @@
 ---
-import refresh from '../../assets/refresh.svg'
+import Droplet from '../../assets/droplet.svg'
+import Refresh from '../../assets/refresh.svg'
+import Scissor from '../../assets/scissor.svg'
+import CircleCheck from '../../assets/circle-check.svg'
 
 const services = [
   {
-    icon: refresh,
-    title: 'Nettoyage professionnel',
+    icon: Droplet,
+    title: 'Nettoyage professionnel et polissage',
     description:
       'Élimination des saletés, traces de doigts et résidus de surface',
-    price: 'À partir de 15€',
+    price: 'À partir de 10€',
     features: [
       'Nettoyage en profondeur',
+      'Polisage holographique',
       'Produits spécialisés non-abrasifs',
       'Séchage contrôlé',
-      'Protection anti-poussière',
+      'Pas de prise en charge des frais de transport*'
     ],
   },
   {
-    icon: refresh,
+    icon: Refresh,
     title: 'Défroissage et aplatissement',
     description:
-      'Correction des plis et déformations pour retrouver une surface plane',
-    price: 'À partir de 25€',
+      'Correction des plis et enfoncement léger pour retrouver une surface plane',
+    price: 'À partir de 20€',
     features: [
-      'Traitement des plis légers à modérés',
-      'Aplatissement progressif',
+      "Nettoyage professionnel et polissage",
+      'Aplatissement d\'un enfoncement léger',
+      'Correction d\'une pliure légère',
       'Technique sans risque',
       'Résultats durables',
+      'Pas de prise en charge des frais de transport*'
     ],
   },
   {
-    icon: refresh,
-    title: 'Réparation des bords',
+    icon: Scissor,
+    title: 'Restauration complète',
     description: 'Restauration des coins et bordures abîmés',
     price: 'À partir de 35€',
     features: [
-      'Réparation des coins cornés',
-      'Traitement des bords effilochés',
+      'Nettoyage professionnel et polissage',
+      'Défroissage et aplatissement',
       'Reconstitution des zones endommagées',
       'Finition imperceptible',
-    ],
-  },
-  {
-    icon: refresh,
-    title: 'Restauration de couleurs',
-    description: 'Ravivage des couleurs ternies et fanées',
-    price: 'À partir de 45€',
-    features: [
-      'Correction des décolorations',
-      'Ravivage des couleurs',
-      "Respect de l'original",
-      'Pigments professionnels',
-    ],
-  },
-  {
-    icon: refresh,
-    title: 'Protection et encapsulation',
-    description: 'Mise sous protection pour une conservation optimale',
-    price: 'À partir de 20€',
-    features: [
-      'Sleeve de protection premium',
-      'Top loader rigide',
-      'Option encapsulation professionnelle',
-      'Étiquetage et documentation',
-    ],
-  },
-  {
-    icon: refresh,
-    title: 'Restauration complète',
-    description: 'Service tout-en-un pour une restauration totale',
-    price: 'Sur devis',
-    features: [
-      'Analyse approfondie',
-      'Tous traitements nécessaires',
-      'Rapport détaillé',
-      'Garantie satisfaction',
+      'Prise en charge des frais de transport*'
     ],
   },
 ]
@@ -103,16 +74,12 @@ const services = [
               class="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 pt-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6"
             >
               <div class="mb-4">
-                <refresh
-                  src={service.icon.src}
-                  alt="refresh"
-                  class="w-10 h-10 text-blue-600"
-                />
+                <service.icon class="w-10 h-10 text-blue-600" />
               </div>
               <h4 data-slot="card-title" class="leading-none">
                 {service.title}
               </h4>
-              <p data-slot="card-description" class="text-muted-foreground">
+              <p data-slot="card-description" class="text-gray-500 text-muted-foreground">
                 {service.description}
               </p>
             </div>
@@ -123,7 +90,7 @@ const services = [
               <ul class="space-y-2">
                 {service.features.map((feature) => (
                   <li class="flex items-start">
-                    <span class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                    <CircleCheck class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                     <span class="text-gray-700">{feature}</span>
                   </li>
                 ))}
