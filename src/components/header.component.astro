@@ -1,13 +1,11 @@
 ---
-import fixMyCard from '../assets/fix-my-card.jpg'
-
 const headers = [
   {
     ref: '/',
     name: 'Accueil',
   },
   {
-    ref: '/',
+    ref: '/prestations',
     name: 'Mes prestations',
   },
   {
@@ -19,7 +17,7 @@ const headers = [
     name: 'Demander un devis',
   },
   {
-    ref: '/',
+    ref: '/about',
     name: 'À propos',
   },
 ]
@@ -31,7 +29,7 @@ const headers = [
     <div class="flex items-center">
       <img
         id="fixMyCard"
-        src={fixMyCard.src}
+        src="https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/fix-my-card.jpg"
         alt="Logo"
         fetchpriority="high"
         width="48"

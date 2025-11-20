@@ -3,7 +3,7 @@ import Header from '../components/header.component.astro'
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="w-full h-full overflow-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -11,19 +11,10 @@ import Header from '../components/header.component.astro'
     <meta name="generator" content={Astro.generator} />
     <title>Fix my card</title>
   </head>
-  <body>
+  <body class="m-0 w-full h-full overflow-hidden">
     <Header />
-    <div class="h-dvh pt-20">
+    <div class="mt-20 overflow-y-auto h-[calc(100%-80px)]">
       <slot />
     </div>
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
