@@ -1,0 +1,522 @@
+---
+import MotionWrapper from './motion-wrapper'
+import Droplet from '../assets/droplet.svg'
+import Refresh from '../assets/refresh.svg'
+import Scissor from '../assets/scissor.svg'
+import CheckCircle from '../assets/circle-check.svg'
+import CircleX from '../assets/circle-x.svg'
+import Sparkles from '../assets/sparkles.svg'
+import Heart from '../assets/heart.svg'
+import Lightbulb from '../assets/lightbulb.svg'
+import Users from '../assets/users.svg'
+import Eye from '../assets/eye.svg'
+
+const values = [
+  {
+    icon: Heart,
+    title: 'Passion',
+    description:
+      'Chaque carte raconte une histoire. Nous restaurons avec amour les souvenirs qui vous sont chers.',
+    color: 'from-rose-400 to-pink-600',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Innovation',
+    description:
+      "Des techniques modernes et respectueuses pour préserver l'authenticité de vos cartes.",
+    color: 'from-amber-400 to-orange-600',
+  },
+  {
+    icon: Users,
+    title: 'Communauté',
+    description:
+      'Nous sommes collectionneurs, comme vous. Votre satisfaction est notre priorité.',
+    color: 'from-blue-400 to-indigo-600',
+  },
+]
+
+const techniques = [
+  {
+    icon: Droplet,
+    title: 'Nettoyage minutieux',
+    description:
+      'Élimination délicate des impuretés sans altérer les couleurs originales',
+  },
+  {
+    icon: Scissor,
+    title: 'Redressement des bords',
+    description:
+      'Techniques de pressage professionnel pour redonner forme aux cartes',
+  },
+  {
+    icon: Eye,
+    title: 'Retouche des détails',
+    description: 'Restauration minutieuse des zones endommagées avec précision',
+  },
+  {
+    icon: CheckCircle,
+    title: 'Finition protectrice',
+    description:
+      'Application de traitements pour préserver la restauration dans le temps',
+  },
+]
+---
+
+<div class="overflow-hidden">
+  {/* Hero Section - Artistique */}
+  <section
+    class="relative min-h-screen flex items-center justify-center overflow-hidden"
+  >
+    {/* Background Pokemon - Pikachu */}
+    <div
+      class="absolute top-20 right-0 w-[600px] h-[600px] opacity-5 pointer-events-none"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1695747003335-ac77eeea43c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwaWthY2h1JTIwYXJ0d29ya3xlbnwxfHx8fDE3NjM2MjkzMDZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+        alt="Pikachu background"
+        class="w-full h-full object-contain"
+      />
+    </div>
+
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 -z-10"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+      <MotionWrapper
+        client:load
+        client:load
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        class="text-center"
+      >
+        <div class="inline-block mb-6">
+          <Sparkles class="w-16 h-16 text-yellow-500 mx-auto animate-pulse" />
+        </div>
+        <h1
+          class="text-6xl md:text-7xl mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
+        >
+          PokéRestore
+        </h1>
+        <p class="text-2xl md:text-3xl text-gray-700 mb-4 max-w-3xl mx-auto">
+          L'art de redonner vie à vos souvenirs
+        </p>
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto italic">
+          Parce que chaque carte mérite une seconde chance
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <button
+            onclick="location.href='devis'"
+            class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg"
+          >
+            Commencer la restauration
+          </button>
+          <button
+            onclick="location.href='prestations'"
+            class="border-2 border-purple-600 text-purple-600 hover:bg-purple-50"
+          >
+            Découvrir nos réalisations
+          </button>
+        </div>
+      </MotionWrapper>
+    </div>
+  </section>
+
+  {/* Notre Histoire */}
+  <section class="relative py-24 bg-white overflow-hidden">
+    {/* Background Pokemon - Charizard */}
+    <div
+      class="absolute bottom-0 left-0 w-[500px] h-[500px] opacity-5 pointer-events-none"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1640271197084-2477813a92fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGFyaXphcmQlMjBwb2tlbW9ufGVufDF8fHx8MTc2MzYyOTMwNnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+        alt="Charizard background"
+        class="w-full h-full object-contain"
+      />
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <MotionWrapper
+        client:load
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        class="grid md:grid-cols-2 gap-12 items-center"
+      >
+        <div>
+          <h2
+            class="text-5xl mb-6 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent"
+          >
+            Notre Histoire
+          </h2>
+          <div class="space-y-4 text-gray-700">
+            <p class="text-lg leading-relaxed">
+              Tout a commencé par une carte Dracaufeu abîmée trouvée dans un
+              grenier. Cette découverte a éveillé en nous une passion : <span
+                class="italic">préserver l'histoire</span
+              >
+              que chaque carte porte en elle.
+            </p>
+            <p class="text-lg leading-relaxed">
+              Depuis 2020, nous avons développé des <span class="font-medium"
+                >techniques uniques</span
+              > de restauration qui respectent l'intégrité de vos cartes. Notre approche
+              combine savoir-faire artisanal et technologies modernes.
+            </p>
+            <p class="text-lg leading-relaxed">
+              La restauration de cartes Pokémon n'est pas qu'une question
+              d'esthétique : c'est
+              <span class="font-medium"> préserver des souvenirs</span>, <span
+                class="font-medium">valoriser des collections</span
+              >, et <span class="font-medium">redonner leur dignité</span> à ces
+              objets qui ont marqué notre enfance.
+            </p>
+          </div>
+        </div>
+        <div class="relative">
+          <div
+            class="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-orange-200 to-red-200 rounded-2xl"
+          >
+          </div>
+          <div class="relative bg-white p-8 rounded-2xl shadow-xl">
+            <h3 class="text-2xl mb-4 text-gray-900">
+              La légitimité de la restauration
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <CheckCircle
+                  class="w-5 h-5 text-green-600 mt-1 flex-shrink-0"
+                />
+                <span class="text-gray-700"
+                  >Préservation du patrimoine ludique</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircle
+                  class="w-5 h-5 text-green-600 mt-1 flex-shrink-0"
+                />
+                <span class="text-gray-700"
+                  >Revalorisation de cartes endommagées</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircle
+                  class="w-5 h-5 text-green-600 mt-1 flex-shrink-0"
+                />
+                <span class="text-gray-700"
+                  >Techniques non-invasives et réversibles</span
+                >
+              </li>
+              <li class="flex items-start gap-3">
+                <CheckCircle
+                  class="w-5 h-5 text-green-600 mt-1 flex-shrink-0"
+                />
+                <span class="text-gray-700"
+                  >Transparence totale sur nos interventions</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </MotionWrapper>
+    </div>
+  </section>
+
+  {/* Nos Valeurs - Section artistique */}
+  <section
+    class="relative py-24 bg-gradient-to-br from-slate-900 to-indigo-900 text-white overflow-hidden"
+  >
+    {/* Background Pokemon - Mewtwo */}
+    <div
+      class="absolute top-1/2 right-0 -translate-y-1/2 w-[700px] h-[700px] opacity-10 pointer-events-none"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1695552166827-5da4059be4ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXd0d28lMjBwb2tlbW9ufGVufDF8fHx8MTc2MzU0NDI4OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+        alt="Mewtwo background"
+        class="w-full h-full object-contain"
+      />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <MotionWrapper
+        client:load
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        class="text-center mb-16"
+      >
+        <h2 class="text-5xl mb-6">Nos Valeurs</h2>
+        <p class="text-xl text-indigo-200 max-w-3xl mx-auto">
+          Ce qui guide chaque geste, chaque décision, chaque restauration
+        </p>
+      </MotionWrapper>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {
+          values.map((value, index) => (
+            <MotionWrapper
+              client:load
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <div
+                data-slot="card"
+                class="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300 h-full"
+              >
+                <div data-slot="card-content" class="pt-8 text-center">
+                  <div
+                    class={`inline-flex p-4 rounded-full bg-gradient-to-br ${value.color} mb-6`}
+                  >
+                    <value.icon class="w-12 h-12" />
+                  </div>
+                  <h3 class="text-2xl mb-4">{value.title}</h3>
+                  <p class="text-indigo-100 leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
+              </div>
+            </MotionWrapper>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* Notre Processus - Techniques de travail */}
+  <section
+    class="relative py-24 bg-gradient-to-br from-purple-50 to-blue-50 overflow-hidden"
+  >
+    {/* Background Pokemon - Artistic */}
+    <div
+      class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[800px] opacity-5 pointer-events-none"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1668119065849-d8a7e9d73a7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb2tlbW9uJTIwYXJ0aXN0aWN8ZW58MXx8fHwxNzYzNjI5MzA2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+        alt="Pokemon background"
+        class="w-full h-full object-contain"
+      />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <MotionWrapper
+        client:load
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        class="text-center mb-16"
+      >
+        <h2
+          class="text-5xl mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+        >
+          Notre Processus de Restauration
+        </h2>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+          Des techniques professionnelles pour un résultat exceptionnel
+        </p>
+      </MotionWrapper>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+          techniques.map((technique, index) => (
+            <MotionWrapper
+              client:load
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              class="relative"
+            >
+              <div class="absolute -top-4 -left-4 text-8xl text-purple-200/30 pointer-events-none">
+                {index + 1}
+              </div>
+              <div
+                data-slot="card"
+                class="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div data-slot="card-content" class="pt-6">
+                  <div class="flex justify-center mb-4">
+                    <div class="p-3 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 text-white">
+                      <technique.icon class="w-8 h-8" />
+                    </div>
+                  </div>
+                  <h3 class="text-xl mb-3 text-center">{technique.title}</h3>
+                  <p class="text-gray-600 text-center text-sm leading-relaxed">
+                    {technique.description}
+                  </p>
+                </div>
+              </div>
+            </MotionWrapper>
+          ))
+        }
+      </div>
+
+      <MotionWrapper
+        client:load
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        class="mt-16 text-center"
+      >
+        <button
+          onclick="location.href='prestations'"
+          class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-lg"
+        >
+          Découvrir toutes nos prestations
+        </button>
+      </MotionWrapper>
+    </div>
+  </section>
+
+  {/* L'Art de la Restauration - Section poétique */}
+  <section
+    class="relative py-24 bg-gradient-to-br from-amber-50 to-orange-50 overflow-hidden"
+  >
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <MotionWrapper
+        client:load
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        class="text-center"
+      >
+        <h2 class="text-5xl mb-8 text-gray-900">
+          Plus qu'une restauration, une renaissance
+        </h2>
+        <div class="prose prose-lg mx-auto text-gray-700 space-y-6">
+          <p class="text-xl italic leading-relaxed">
+            "Chaque carte qui nous est confiée a vécu. Elle a été échangée dans
+            une cour d'école, rangée précieusement dans un classeur, ou
+            redécouverte des années plus tard."
+          </p>
+          <p class="text-lg leading-relaxed">
+            Notre mission dépasse la simple réparation. Nous restaurons des <span
+              class="font-medium">émotions</span
+            >, des <span class="font-medium">souvenirs d'enfance</span>, des <span
+              class="font-medium">trésors de collection</span
+            >. Chaque geste est guidé par le respect de l'histoire unique de
+            votre carte.
+          </p>
+          <p class="text-lg leading-relaxed">
+            Avec patience et expertise, nous redonnons à vos cartes leur éclat,
+            tout en préservant leur authenticité. Car une carte restaurée, c'est
+            une nouvelle vie qui commence.
+          </p>
+        </div>
+      </MotionWrapper>
+    </div>
+  </section>
+
+  {/* Stats & Social Proof */}
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <MotionWrapper
+          client:load
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          class="text-center"
+        >
+          <div
+            class="text-6xl mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          >
+            500+
+          </div>
+          <p class="text-xl text-gray-700">Cartes restaurées avec amour</p>
+        </MotionWrapper>
+        <MotionWrapper
+          client:load
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          class="text-center"
+        >
+          <div
+            class="text-6xl mb-3 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent"
+          >
+            98%
+          </div>
+          <p class="text-xl text-gray-700">Collectionneurs satisfaits</p>
+        </MotionWrapper>
+        <MotionWrapper
+          client:load
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          class="text-center"
+        >
+          <div
+            class="text-6xl mb-3 bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent"
+          >
+            5+
+          </div>
+          <p class="text-xl text-gray-700">Années de passion et d'expertise</p>
+        </MotionWrapper>
+      </div>
+    </div>
+  </section>
+
+  {/* CTA Final */}
+  <section
+    class="relative py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white overflow-hidden"
+  >
+    <div class="absolute inset-0 opacity-10">
+      <div
+        class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl"
+      >
+      </div>
+      <div
+        class="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl"
+      >
+      </div>
+    </div>
+
+    <div
+      class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
+    >
+      <MotionWrapper
+        client:load
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <Sparkles class="w-16 h-16 mx-auto mb-6 animate-pulse" />
+        <h2 class="text-5xl mb-6">Prêt à redonner vie à vos cartes ?</h2>
+        <p class="text-xl mb-10 text-purple-100 leading-relaxed">
+          Chaque restauration commence par une conversation. Parlez-nous de vos
+          cartes, de leur histoire, et nous vous proposerons la meilleure
+          solution.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <button
+            onclick="location.href='devis'"
+            class="bg-white text-purple-600 hover:bg-gray-100 shadow-xl"
+          >
+            Demander un devis gratuit
+          </button>
+          <button
+            onclick="location.href='about'"
+            class="border-2 border-white text-white hover:bg-white/10"
+          >
+            En savoir plus sur nous
+          </button>
+        </div>
+      </MotionWrapper>
+    </div>
+  </section>
+</div>
