@@ -1,0 +1,230 @@
+---
+import Heart from '../../assets/heart.svg'
+import Target from '../../assets/target.svg'
+import Users from '../../assets/users.svg'
+import Award from '../../assets/award.svg'
+
+const values = [
+  {
+    icon: Heart,
+    title: 'Passion',
+    description:
+      "Collectionneur depuis l'enfance, je comprends l'attachement émotionnel à chaque carte.",
+  },
+  {
+    icon: Target,
+    title: 'Précision',
+    description:
+      'Chaque restauration est réalisée avec une attention méticuleuse aux détails.',
+  },
+  {
+    icon: Award,
+    title: 'Excellence',
+    description:
+      'Formation continue et techniques de pointe pour des résultats optimaux.',
+  },
+  {
+    icon: Users,
+    title: 'Confiance',
+    description:
+      'Transparence totale et communication claire à chaque étape du processus.',
+  },
+]
+
+const timeline = [
+  {
+    year: '2015',
+    title: 'Les débuts',
+    description:
+      "Première restauration personnelle d'une carte d'enfance abîmée.",
+  },
+  {
+    year: '2018',
+    title: 'Formation professionnelle',
+    description:
+      'Formation spécialisée en restauration de documents et objets de collection.',
+  },
+  {
+    year: '2020',
+    title: 'Lancement de PokéRestore',
+    description:
+      'Ouverture officielle du service de restauration professionnel.',
+  },
+  {
+    year: '2023',
+    title: 'Expansion',
+    description:
+      'Plus de 500 cartes restaurées et une clientèle fidèle en France.',
+  },
+  {
+    year: '2025',
+    title: "Aujourd'hui",
+    description:
+      'Expert reconnu avec des techniques de restauration innovantes.',
+  },
+]
+---
+
+<div class="py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header */}
+    <div class="text-center mb-12">
+      <h1 class="text-5xl mb-4 text-gray-900">À propos</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        L'histoire d'une passion devenue expertise professionnelle
+      </p>
+    </div>
+
+    {/* Hero Section with Image */}
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+      <div class="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+        <img
+          src="https://images.unsplash.com/photo-1728379824591-8baf4afae695?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0b3JhdGlvbiUyMHRvb2xzJTIwd29ya3NwYWNlfGVufDF8fHx8MTc2MzQ1NjI2NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+          alt="Espace de travail de restauration"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div>
+        <h2 class="text-3xl mb-4 text-gray-900">Mon histoire</h2>
+        <div class="space-y-4 text-gray-700">
+          <p>
+            Bonjour, je suis Alexandre, fondateur de PokéRestore. Ma passion
+            pour les cartes Pokémon a commencé en 1999, quand j'ai ouvert mon
+            premier booster lors de la sortie du jeu en France.
+          </p>
+          <p>
+            Des années plus tard, en retrouvant ma collection d'enfance dans de
+            mauvais état, j'ai décidé d'apprendre à les restaurer. Ce qui était
+            au départ un projet personnel est devenu une véritable vocation.
+          </p>
+          <p>
+            Après plusieurs années de pratique et une formation professionnelle
+            en restauration, j'ai créé PokéRestore pour aider d'autres
+            collectionneurs à redonner vie à leurs cartes précieuses.
+          </p>
+          <p>
+            Aujourd'hui, avec plus de 500 cartes restaurées et des clients
+            satisfaits à travers toute la France, je continue de perfectionner
+            mes techniques pour offrir le meilleur service possible.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* Values */}
+    <div class="mb-16">
+      <h2 class="text-3xl mb-8 text-center text-gray-900">Mes valeurs</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {
+          values.map((value) => (
+            <div class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border text-center hover:shadow-lg transition-shadow">
+              <div class="px-6 [&:last-child]:pb-6 pt-6">
+                <div class="flex justify-center mb-4">
+                  <value.icon class="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 class="text-xl mb-2">{value.title}</h3>
+                <p class="text-gray-600">{value.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    {/* Timeline */}
+    <div class="mb-16">
+      <h2 class="text-3xl mb-8 text-center text-gray-900">Mon parcours</h2>
+      <div class="max-w-3xl mx-auto">
+        <div class="space-y-8">
+          {
+            timeline.map((item, index) => (
+              <div class="flex gap-6">
+                <div class="flex flex-col items-center">
+                  <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0">
+                    {item.year}
+                  </div>
+                  {index < timeline.length - 1 && (
+                    <div class="w-0.5 h-full bg-blue-200 mt-2" />
+                  )}
+                </div>
+                <div class="pb-8">
+                  <h3 class="text-xl mb-2">{item.title}</h3>
+                  <p class="text-gray-600">{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    {/* Certifications & Skills */}
+    <div
+      class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-8 mb-16"
+    >
+      <h2 class="text-3xl mb-8 text-center text-gray-900">
+        Qualifications & Expertise
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div>
+          <h3 class="text-xl mb-4 text-gray-900">Formations</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>✓ Restauration de documents anciens (2018)</li>
+            <li>✓ Conservation d'objets de collection (2019)</li>
+            <li>✓ Techniques de grading PSA/BGS (2020)</li>
+            <li>✓ Chimie des matériaux (2021)</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl mb-4 text-gray-900">Compétences techniques</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>✓ Nettoyage et décontamination</li>
+            <li>✓ Défroissage et aplatissement</li>
+            <li>✓ Réparation structurelle</li>
+            <li>✓ Restauration chromatique</li>
+            <li>✓ Encapsulation professionnelle</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {/* Stats */}
+    <div class="text-center mb-16">
+      <h2 class="text-3xl mb-8 text-gray-900">En chiffres</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="text-5xl text-blue-600 mb-2">500+</div>
+          <p class="text-xl text-gray-700">Cartes restaurées</p>
+        </div>
+        <div>
+          <div class="text-5xl text-blue-600 mb-2">98%</div>
+          <p class="text-xl text-gray-700">Taux de satisfaction</p>
+        </div>
+        <div>
+          <div class="text-5xl text-blue-600 mb-2">5+</div>
+          <p class="text-xl text-gray-700">Années d'expérience</p>
+        </div>
+        <div>
+          <div class="text-5xl text-blue-600 mb-2">200+</div>
+          <p class="text-xl text-gray-700">Clients satisfaits</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Contact CTA */}
+    <div
+      class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border bg-blue-600 text-white text-center"
+    >
+      <div class="px-6 [&:last-child]:pb-6 pt-8 pb-8">
+        <h2 class="text-3xl mb-4">Envie d'en savoir plus ?</h2>
+        <p class="text-xl text-blue-100 mb-6">
+          N'hésitez pas à me contacter pour discuter de votre projet
+        </p>
+        <div class="space-y-2">
+          <p class="text-xl">📧 contact@pokerestore.fr</p>
+          <p class="text-xl">📞 +33 6 12 34 56 78</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
