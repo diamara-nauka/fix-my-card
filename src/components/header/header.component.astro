@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets'
+import FixMyCard from '../../assets/illustrations/fix-my-card.jpg'
+import MobileMenu from './MobileMenu.jsx'
+
+const navItems = [
+  { id: 'accueil', label: 'Accueil', href: '/' },
+  { id: 'prestations', label: 'Mes prestations', href: '/prestations' },
+  { id: 'realisations', label: 'Mes réalisations', href: '/mes-realisations' },
+  { id: 'devis', label: 'Demander un devis', href: '/devis' },
+  { id: 'apropos', label: 'À propos', href: '/about' },
+]
+---
+
+<nav class="bg-white shadow-md sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <a href="/" class="flex items-center space-x-2">
+        <Image
+          id="fixMyCard"
+          src={FixMyCard}
+          alt="FixMycard"
+          fetchpriority="high"
+          quality={80}
+          width={48}
+          height={48}
+          format="webp"
+          class="h-12 w-auto"
+        />
+        <span class="text-xl text-blue-600">Fix My Card</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex space-x-8">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="transition-colors text-gray-700 hover:text-blue-600"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <MobileMenu client:load navItems={navItems} />
+    </div>
+  </div>
+</nav>

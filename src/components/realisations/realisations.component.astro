@@ -1,12 +1,18 @@
 ---
+import { Image } from 'astro:assets'
 import ImageModal from './image-modal.jsx'
+import Flagadoss from '../../assets/illustrations/flagadoss.jpeg'
+import Rayquaza from '../../assets/illustrations/rayquaza.jpeg'
+import Drac from '../../assets/illustrations/drac.jpeg'
+import Alakazam from '../../assets/illustrations/alakazam.jpeg'
+import Tortank from '../../assets/illustrations/tortank.jpeg'
+import Dracolo from '../../assets/illustrations/dracolo.jpeg'
 
 const projects = [
   {
     title: 'Flagadoss - Neo Genesis',
     service: 'Restauration complète',
-    image:
-      'https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/flagadoss.jpeg',
+    image: Flagadoss,
     description: 'Nettoyage, défroissage et réparation des bords',
     before: 'État: Usé, plis visibles, coins abîmés',
     after: 'État: Comme neuf, surface plane, couleurs vives',
@@ -14,8 +20,7 @@ const projects = [
   {
     title: 'Rayquaza - EX : Deoxys',
     service: 'Défroissage expert',
-    image:
-      'https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/rayquaza.jpeg',
+    image: Rayquaza,
     description: 'Aplatissement et élimination des plis',
     before: 'État: Plusieurs plis marqués',
     after: 'État: Surface parfaitement plane',
@@ -23,8 +28,7 @@ const projects = [
   {
     title: 'Dracaufeu Radieux - Zénith Suprême',
     service: 'Réparation des bords',
-    image:
-      'https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/drac.jpeg',
+    image: Drac,
     description: 'Réparation minutieuse des coins et bordures',
     before: 'État: Coins très abîmés, bordures effilochées - PSA 7',
     after: 'État: Coins restaurés, finition invisible -PSA 10',
@@ -32,8 +36,7 @@ const projects = [
   {
     title: 'Pikachu Promo - 2001',
     service: 'Nettoyage et protection',
-    image:
-      'https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/alakazam.jpeg',
+    image: Alakazam,
     description: 'Nettoyage professionnel et encapsulation',
     before: 'État: Traces de manipulation, légèrement sale',
     after: 'État: Impeccable, protégée sous grade',
@@ -41,8 +44,7 @@ const projects = [
   {
     title: 'Collection Base Set - 1999',
     service: 'Restauration de couleurs',
-    image:
-      'https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/tortank.jpeg',
+    image: Tortank,
     description: 'Ravivage des couleurs et nettoyage',
     before: 'État: Couleurs ternes, aspect vieilli',
     after: 'État: Couleurs éclatantes, aspect rajeuni',
@@ -51,8 +53,7 @@ const projects = [
   {
     title: 'Léviator Shiny - Set Tempête',
     service: 'Restauration complète',
-    image:
-      'https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/dracolo.jpeg',
+    image: Dracolo,
     description: 'Service complet: nettoyage, réparation, protection',
     before: 'État: Très abîmé, multiple dommages',
     after: 'État: Restauration exceptionnelle',
@@ -78,9 +79,13 @@ const projects = [
             class="cursor-pointer bg-card text-card-foreground flex flex-col gap-6 rounded-xl border overflow-hidden hover:shadow-xl transition-shadow"
           >
             <div class="relative h-64 overflow-hidden">
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
+                quality={80}
+                width={700}
+                height={300}
+                format="webp"
                 class="w-full h-full object-cover"
               />
               <div class="absolute top-4 right-4">

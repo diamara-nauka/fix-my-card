@@ -1,7 +1,9 @@
 ---
-import Mail from '../assets/mail.svg'
-import Phone from '../assets/phone.svg'
-import MapPin from '../assets/map-pin.svg'
+import Mail from '../assets/icons/mail.svg'
+import Phone from '../assets/icons/phone.svg'
+import MapPin from '../assets/icons/map-pin.svg'
+import FixMyCard from '../assets/illustrations/fix-my-card-alpha.png'
+import { Image } from 'astro:assets'
 ---
 
 <footer class="bg-gray-900 text-white mt-16">
@@ -9,12 +11,22 @@ import MapPin from '../assets/map-pin.svg'
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div>
         <div class="flex items-center space-x-2 mb-4">
-          <div class="text-2xl">🎴</div>
+          <Image
+            id="fixMyCard"
+            src={FixMyCard}
+            alt="FixMycard"
+            fetchpriority="high"
+            quality={80}
+            width={48}
+            height={48}
+            format="webp"
+            class="h-12 w-auto"
+          />
           <span class="text-xl text-blue-400">Fix My Card</span>
         </div>
         <p class="text-gray-400">
-          Expert en restauration de cartes Pokémon depuis 2020. Redonnez vie à
-          vos cartes les plus précieuses.
+          Expert en restauration de cartes Pokémon. Redonnez vie à vos cartes
+          les plus précieuses.
         </p>
       </div>
 
@@ -23,15 +35,15 @@ import MapPin from '../assets/map-pin.svg'
         <div class="space-y-2 text-gray-400">
           <div class="flex items-center space-x-2">
             <Mail height="18" width="18" />
-            <span>contact@pokerestore.fr</span>
+            <span>contact@fixmycard.fr</span>
           </div>
           <div class="flex items-center space-x-2">
             <Phone height="18" width="18" />
-            <span>+33 6 12 34 56 78</span>
+            <span>+33 6 06 06 06 06</span>
           </div>
           <div class="flex items-center space-x-2">
             <MapPin height="18" width="18" />
-            <span>Paris, France</span>
+            <span>Montpellier, France</span>
           </div>
         </div>
       </div>
@@ -46,7 +58,7 @@ import MapPin from '../assets/map-pin.svg'
     </div>
 
     <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-      <p>&copy; 2025 PokéRestore. Tous droits réservés.</p>
+      <p>&copy; 2025 Fix My Card. Tous droits réservés.</p>
     </div>
   </div>
 </footer>
