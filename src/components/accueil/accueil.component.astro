@@ -8,6 +8,10 @@ import Lightbulb from '../../assets/icons/lightbulb.svg'
 import Users from '../../assets/icons/users.svg'
 import Eye from '../../assets/icons/eye.svg'
 import OrderCheck from './order-check.jsx'
+import RayquazaCarte from '../../assets/illustrations/rayquaza-carte.webp'
+import DracolosseCarte from '../../assets/illustrations/dracolosse-carte.webp'
+import FixMyCard from '../../assets/illustrations/fix-my-card.jpg'
+import { Image } from 'astro:assets'
 
 const values = [
   {
@@ -67,18 +71,30 @@ const techniques = [
     <div
       class="absolute top-20 left-0 w-[600px] h-[600px] opacity-4 pointer-events-none"
     >
-      <img
-        src="https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/accueil/rayquaza.webp"
-        alt="Pikachu background"
+      <Image
+        id="RayquazaCarte"
+        src={RayquazaCarte}
+        alt="RayquazaCarte"
+        fetchpriority="high"
+        quality={80}
+        width={600}
+        height={600}
+        format="webp"
         class="w-full h-full object-contain"
       />
     </div>
     <div
       class="absolute top-20 right-0 w-[600px] h-[600px] opacity-4 pointer-events-none"
     >
-      <img
-        src="https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/accueil/Dracolosse-carte.webp"
-        alt="Pikachu background"
+      <Image
+        id="DracolosseCarte"
+        src={DracolosseCarte}
+        alt="DracolosseCarte"
+        fetchpriority="high"
+        quality={80}
+        width={600}
+        height={600}
+        format="webp"
         class="w-full h-full object-contain"
       />
     </div>
@@ -93,10 +109,16 @@ const techniques = [
     >
       <div class="text-center">
         <div class="inline-block mb-6">
-          <img
-            src="https://kqedvhcdsrldkhpavxgx.supabase.co/storage/v1/object/public/storagetestnet/fix-my-card.jpg"
+          <Image
+            id="FixMyCard"
+            src={FixMyCard}
+            alt="FixMyCard"
+            fetchpriority="high"
+            quality={80}
+            width={320}
+            height={320}
+            format="webp"
             class="w-21 h-21 text-yellow-500 mx-auto"
-            alt="fixMyCard"
           />
         </div>
         <h1
