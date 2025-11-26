@@ -1,7 +1,12 @@
 import { createSignal, For } from 'solid-js'
 
+interface FileItem {
+  file: File
+  url: string
+}
+
 export default function Formulaire() {
-  const [files, setFiles] = createSignal([])
+  const [files, setFiles] = createSignal<FileItem[]>([])
   const max = 5
 
   const addImage = () => {
@@ -25,7 +30,7 @@ export default function Formulaire() {
     input.click()
   }
 
-  const removeImage = (index) => {
+  const removeImage = (index: number) => {
     const list = [...files()]
     list.splice(index, 1)
     setFiles(list)
@@ -42,6 +47,7 @@ export default function Formulaire() {
               {/* Miniature */}
               <img
                 src={item.url}
+                alt={`Image ${index() + 1}`}
                 class="object-cover w-full h-full rounded-md border"
               />
               <input
@@ -50,7 +56,7 @@ export default function Formulaire() {
                 class="hidden"
                 value=""
                 // fichier injecté dans l'input pour Netlify
-                ref={(el) => {
+                ref={(el: HTMLInputElement) => {
                   // On recrée un fichier dans cet input (obligatoire pour Netlify)
                   const dt = new DataTransfer()
                   dt.items.add(item.file)
