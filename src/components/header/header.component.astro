@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets'
-import FixMyCard from '../../assets/illustrations/fix-my-card.jpg'
+import FixMyCard from '../../assets/illustrations/fix-my-card.png'
+import Fix from '../../assets/illustrations/fix.png'
+import My from '../../assets/illustrations/my.png'
+import Card from '../../assets/illustrations/card.png'
 import MobileMenu from './MobileMenu.jsx'
 
 const navItems = [
@@ -15,19 +18,55 @@ const navItems = [
 <nav class="bg-white shadow-md sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <a href="/" class="flex items-center space-x-2">
+      <a href="/" class="flex items-center">
         <Image
           id="fixMyCard"
           src={FixMyCard}
           alt="FixMycard"
           fetchpriority="high"
-          quality={80}
+          quality={90}
           width={48}
           height={48}
           format="webp"
-          class="h-12 w-auto"
+          class="mr-3"
         />
-        <span class="text-xl text-blue-600">Fix My Card</span>
+        <Image
+          id="fix"
+          src={Fix}
+          style="height:27px; width:47px;"
+          alt="Fix"
+          fetchpriority="high"
+          quality={80}
+          width={100}
+          fit="contain"
+          position="center"
+          format="webp"
+          class="mr-1"
+        />
+        <Image
+          id="my"
+          src={My}
+          alt="My"
+          style="height:31px; width:44px;"
+          fetchpriority="high"
+          quality={80}
+          width={100}
+          format="webp"
+          position="center"
+          fit="contain"
+        />
+        <Image
+          id="card"
+          fit="contain"
+          src={Card}
+          alt="card"
+          style="height:34px; width:64px;"
+          fetchpriority="high"
+          quality={80}
+          width={100}
+          position="center"
+          format="webp"
+        />
       </a>
 
       <div class="hidden md:flex space-x-8">
