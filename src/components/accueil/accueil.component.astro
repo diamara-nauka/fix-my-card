@@ -14,6 +14,8 @@ import Fix from '../../assets/illustrations/fix.png'
 import My from '../../assets/illustrations/my.png'
 import Card from '../../assets/illustrations/card.png'
 import pokePattern from '../../assets/illustrations/poke-pattern-2x.png'
+import tcgDevicesBg from '../../assets/illustrations/tcg-devices-bg.jpg'
+import tcgDevicesBgPattern from '../../assets/illustrations/tcg-devices-bg-pattern.png'
 
 const values = [
   {
@@ -65,6 +67,31 @@ const techniques = [
   },
 ]
 ---
+
+<style define:vars={{ patternUrl: `url(${tcgDevicesBgPattern.src})` }}>
+  .tcg-devices-section {
+    position: relative;
+  }
+
+  .tcg-devices-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--patternUrl);
+    background-position: 50%;
+    background-size: 300px;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .tcg-devices-section > * {
+    position: relative;
+    z-index: 1;
+  }
+</style>
 
 <div class="overflow-hidden">
   <section
@@ -160,9 +187,7 @@ const techniques = [
     </div>
   </section>
 
-  {/* Notre Histoire */}
   <section class="relative py-24 bg-white overflow-hidden">
-    {/* Background Pokemon - Charizard */}
     <div
       class="absolute bottom-0 left-0 w-[500px] h-[500px] opacity-5 pointer-events-none"
     >
@@ -254,21 +279,12 @@ const techniques = [
     </div>
   </section>
 
-  {/* Nos Valeurs - Section artistique */}
   <section
-    class="relative py-24 bg-gradient-to-br from-slate-900 to-indigo-900 text-white overflow-hidden"
+    style={` background-image: url(${tcgDevicesBg.src});background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;`}
+    class="tcg-devices-section relative py-24 bg-gradient-to-br from-slate-900 to-indigo-900 text-white overflow-hidden"
   >
-    {/* Background Pokemon - Mewtwo */}
-    <div
-      class="absolute top-1/2 right-0 -translate-y-1/2 w-[700px] h-[700px] opacity-10 pointer-events-none"
-    >
-      <img
-        src="https://images.unsplash.com/photo-1695552166827-5da4059be4ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXd0d28lMjBwb2tlbW9ufGVufDF8fHx8MTc2MzU0NDI4OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-        alt="Mewtwo background"
-        class="w-full h-full object-contain"
-      />
-    </div>
-
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16">
         <h2 class="text-5xl mb-6">Nos Valeurs</h2>
@@ -304,11 +320,9 @@ const techniques = [
     </div>
   </section>
 
-  {/* Notre Processus - Techniques de travail */}
   <section
     class="relative py-24 bg-gradient-to-br from-purple-50 to-blue-50 overflow-hidden"
   >
-    {/* Background Pokemon - Artistic */}
     <div
       class="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[800px] opacity-5 pointer-events-none"
     >
@@ -370,7 +384,6 @@ const techniques = [
     </div>
   </section>
 
-  {/* L'Art de la Restauration - Section poétique */}
   <section
     class="relative py-24 bg-gradient-to-br from-amber-50 to-orange-50 overflow-hidden"
   >
@@ -403,7 +416,6 @@ const techniques = [
     </div>
   </section>
 
-  {/* Stats & Social Proof */}
   <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -435,7 +447,6 @@ const techniques = [
     </div>
   </section>
 
-  {/* CTA Final */}
   <section
     class="relative py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white overflow-hidden"
   >
