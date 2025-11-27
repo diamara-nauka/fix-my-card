@@ -13,6 +13,7 @@ import { Image } from 'astro:assets'
 import Fix from '../../assets/illustrations/fix.png'
 import My from '../../assets/illustrations/my.png'
 import Card from '../../assets/illustrations/card.png'
+import pokePattern from '../../assets/illustrations/poke-pattern-2x.png'
 
 const values = [
   {
@@ -67,14 +68,9 @@ const techniques = [
 
 <div class="overflow-hidden">
   <section
-    style="min-height: calc(100vh - 64px);"
+    style={`min-height: calc(100vh - 64px); background-image: url(${pokePattern.src}); background-size: 300px;`}
     class="grid grid-cols-1 md:grid-cols-2 justify-center items-center overflow-hidden"
   >
-    <div
-      class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 -z-10"
-    >
-    </div>
-
     <div class="flex justify-center items-center">
       <div
         class="flex flex-col justify-center md:items-start items-center max-w-[610px] h-[550px]"
