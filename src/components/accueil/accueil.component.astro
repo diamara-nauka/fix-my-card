@@ -3,10 +3,10 @@ import Droplet from '../../assets/icons/droplet.svg'
 import Scissor from '../../assets/icons/scissor.svg'
 import CheckCircle from '../../assets/icons/circle-check.svg'
 import Sparkles from '../../assets/icons/sparkles.svg'
-import Heart from '../../assets/icons/heart.svg'
-import Lightbulb from '../../assets/icons/lightbulb.svg'
-import Users from '../../assets/icons/users.svg'
-import Eye from '../../assets/icons/eye.svg'
+import RaichuCorrection from '../../assets/illustrations/raichu-correction.jpg'
+import RaichuFinition from '../../assets/illustrations/raichu-finition.jpg'
+import RaichuNettoyage from '../../assets/illustrations/raichu-nettoyage.jpg'
+import RaichuRetouche from '../../assets/illustrations/raichu-retouche.jpg'
 import OrderCheck from './order-check.tsx'
 import FixMyCard from '../../assets/illustrations/fix-my-card.png'
 import { Image } from 'astro:assets'
@@ -50,23 +50,23 @@ const values = [
 
 const techniques = [
   {
-    icon: Droplet,
+    icon: RaichuNettoyage,
     title: 'Nettoyage minutieux',
     description:
       'Élimination délicate des impuretés sans altérer la surface de la carte',
   },
   {
-    icon: Scissor,
+    icon: RaichuCorrection,
     title: 'Correction des endommagements',
     description: 'Correction des endommagements',
   },
   {
-    icon: Eye,
+    icon: RaichuRetouche,
     title: 'Retouche des détails',
     description: 'Restauration minutieuse de la partie holographique',
   },
   {
-    icon: CheckCircle,
+    icon: RaichuFinition,
     title: 'Finition',
     description:
       'Techniques de pressage professionnel pour améliorer le rendu final de' +
@@ -368,7 +368,7 @@ const techniques = [
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {
-          techniques.map((technique, index) => (
+          techniques.map((technique) => (
             <div class="relative">
               <div
                 data-slot="card"
@@ -376,11 +376,14 @@ const techniques = [
               >
                 <div data-slot="card-content" class="pt-6">
                   <div class="flex justify-center mb-4">
-                    <div
-                      class="p-3 rounded-full bg-gradient-to-br
-                    from-purple-500 to-blue-500 text-white"
-                    >
-                      <technique.icon class="w-8 h-8" />
+                    <div>
+                      <Image
+                        src={technique.icon}
+                        alt={technique.description}
+                        quality={80}
+                        width={210}
+                        class="w-[210px] h-[280px]"
+                      />
                     </div>
                   </div>
                   <h3 class="text-xl mb-3 text-center">{technique.title}</h3>
