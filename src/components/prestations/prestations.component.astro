@@ -8,36 +8,35 @@ import CircleX from '../../assets/icons/circle-x.svg'
 const services = [
   {
     icon: Droplet,
-    title: 'Formule 1',
-    description: 'Nettoyage professionnel et polissage',
-    price: 'À partir de 10€*',
+    title: 'Formule Carapuce',
+    description: 'Nettoyage professionnel et correction des micro rayures.',
+    price: 'A partir de 10€ + 6.99€ en livraison*',
     features: [
       'Nettoyage en profondeur',
-      'Polisage holographique',
-      'Produits spécialisés non-abrasifs',
-      'Séchage contrôlé',
-      { val: 'Pas de prise en charge des frais de transport**' },
+      'Correction des micro rayures',
+      'Résultats durables',
+      'Produits spécialisés et techniques adaptées aux cartes pokémons',
     ],
   },
   {
     icon: Refresh,
-    title: 'Formule 2',
+    title: 'Formule Métamorphe',
     description:
-      'Correction des plis et enfoncement léger pour retrouver une surface plane',
-    price: 'À partir de 20€*',
+      'Contenue de la formule carapuce + Correction d’un enfoncement ou d’une pliure',
+    price: 'A partir de 20€ + 6.99€ en livraison*',
     features: [
-      'Le contenu de la Formule 1',
-      "Correction d'un enfoncement léger",
-      "Correction d'une pliure légère",
+      'Contenue de la formule Carapuce',
+      'Contenu de la formule Métamorphe',
+      'Amélioration de tous les endommagements présents sur la carte',
+      'Produits spécialisés et techniques adaptées aux cartes pokémons',
       'Résultats durables',
-      { val: 'Pas de prise en charge des frais de transport**' },
     ],
   },
   {
     icon: Scissor,
-    title: 'Formule 3',
-    description: 'Restauration des coins et bordures abîmés',
-    price: 'À partir de 35€*',
+    title: 'Formule Sulfura',
+    description: 'Restauration totale de la carte',
+    price: 'A partir de 35€ + 6.99€ en livraison*',
     features: [
       'Le contenu de la Formule 1',
       'Le contenu de la Formule 2',
@@ -50,23 +49,29 @@ const services = [
 const processes = [
   {
     index: 1,
-    title: 'Diagnostic',
-    subtitle: "Analyse détaillée de l'état de votre carte",
+    title: 'Demande',
+    subtitle: 'Envoie de la demande du devis personnalisé',
   },
   {
     index: 2,
-    title: 'Devis',
-    subtitle: 'Proposition personnalisée et transparente',
+    title: 'Diagnostic',
+    subtitle:
+      'Réponse de Fix My Card avec un devis adapté à la demande du client',
   },
   {
     index: 3,
-    title: 'Restauration',
-    subtitle: 'Intervention experte avec techniques professionnelles',
+    title: 'Validation',
+    subtitle: 'Signature, validation et paiement du devis par le client',
   },
   {
     index: 4,
-    title: 'Retour',
-    subtitle: 'Carte restaurée et protégée, livrée avec soin',
+    title: 'Envoie',
+    subtitle: 'Envoie de la commande à Fix My Card via Mondial relay',
+  },
+  {
+    index: 5,
+    title: 'Prestation et retour',
+    subtitle: 'Prestation réalisée et envoie de la commande au client.',
   },
 ]
 ---
@@ -106,18 +111,8 @@ const processes = [
               <ul class="space-y-2">
                 {service.features.map((feature) => (
                   <li class="flex items-start">
-                    {typeof feature === 'string' && (
-                      <CircleCheck class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                    )}
-                    {typeof feature !== 'string' && (
-                      <CircleX class="w-5 h-5 text-red-500 mr-2 flex-shrink-0 mt-0.5" />
-                    )}
-                    {typeof feature === 'string' && (
-                      <span class="text-gray-700">{feature}</span>
-                    )}
-                    {typeof feature !== 'string' && (
-                      <span class="text-gray-700">{feature.val}</span>
-                    )}
+                    <CircleCheck class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                    <span class="text-gray-700">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -128,12 +123,11 @@ const processes = [
     </div>
     <div class="text-sm mb-4">
       <i>
-        *Les tarifs restent indicatif et soumis à l'évaluation d'un devis.
-      </i>
-      <br />
-      <i>
-        **Fix My Card ne prend pas en charge les frais de transport ou encore
-        l'assurance de transport.
+        *Remise en main propre possible sur la zone de Montpellier. Les prix
+        indiqués correspondent au prix HT de la prestation ajouté au prix de la
+        livraison. Le prix de la livraison peut varier selon le poids du colis.
+        Fix My Card recommande d’ajouter une assurance à votre colis. Les tarifs
+        restent indicatifs et soumis à l’évaluation d’un devis.
       </i>
       <a class="underline" href="/">Voir cgv.</a>
     </div>
@@ -141,9 +135,9 @@ const processes = [
       class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-8 mb-12"
     >
       <h2 class="text-3xl mb-8 text-center text-gray-900">
-        Le processus de restauration
+        Le processus de commande
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
         {
           processes.map((process) => (
             <div class="text-center">
