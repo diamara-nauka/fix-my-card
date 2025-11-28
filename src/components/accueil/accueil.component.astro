@@ -1,6 +1,4 @@
 ---
-import Droplet from '../../assets/icons/droplet.svg'
-import Scissor from '../../assets/icons/scissor.svg'
 import CheckCircle from '../../assets/icons/circle-check.svg'
 import Sparkles from '../../assets/icons/sparkles.svg'
 import RaichuCorrection from '../../assets/illustrations/raichu-correction.jpg'
@@ -19,6 +17,7 @@ import tcgDevicesBgPattern from '../../assets/illustrations/tcg-devices-bg-patte
 import ShinyPokeball from '../../assets/illustrations/shiny-pokeball.png'
 import Masterball from '../../assets/illustrations/masterball.png'
 import LoveBall from '../../assets/illustrations/loveball.png'
+import ImageModal from '../realisations/image-modal.tsx'
 
 const values = [
   {
@@ -378,11 +377,12 @@ const techniques = [
                   <div class="flex justify-center mb-4">
                     <div>
                       <Image
+                        data-clickable-image
                         src={technique.icon}
                         alt={technique.description}
                         quality={80}
-                        width={210}
-                        class="w-[210px] h-[280px]"
+                        width={630}
+                        class="cursor-pointer  rounded-lg  w-[210px] h-[280px]"
                       />
                     </div>
                   </div>
@@ -495,4 +495,5 @@ const techniques = [
       </div>
     </div>
   </section>
+  <ImageModal client:load />
 </div>

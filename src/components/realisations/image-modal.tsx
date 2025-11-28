@@ -28,7 +28,6 @@ const ImageModal: Component = () => {
           src={src()}
           alt="Aperçu image"
           class="max-w-3xl max-h-[90vh] rounded-lg shadow-lg cursor-default"
-          onClick={(e) => e.stopPropagation()}
         />
       </div>
     </Show>
