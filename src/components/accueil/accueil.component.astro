@@ -22,21 +22,25 @@ const values = [
     icon: Heart,
     title: 'Passion',
     description:
-      'Chaque carte a son histoire et un propriétaire. Nous restaurons avec soin chaque carte qui nous a été confiée.',
+      'Chaque carte a son histoire et un propriétaire. Nous restaurons avec' +
+      ' soin chaque carte qui nous a été confiée.',
     color: 'from-rose-400 to-pink-600',
   },
   {
     icon: Lightbulb,
     title: 'Satisfaction',
     description:
-      'La satisfaction client est notre priorité, toutes les étapes de la restauration de votre carte vous seront communiquées, et Fix My Card répondra au maximum à vos attentes.',
+      'La satisfaction client est notre priorité, toutes les étapes de la' +
+      ' restauration de votre carte vous seront communiquées, et Fix My Card' +
+      ' répondra au maximum à vos attentes.',
     color: 'from-amber-400 to-orange-600',
   },
   {
     icon: Users,
     title: 'Précision',
     description:
-      'Toutes nos prestations sont réalisées avec le plus grand soin et la plus grande minutie.',
+      'Toutes nos prestations sont réalisées avec le plus grand soin et la' +
+      ' plus grande minutie.',
     color: 'from-blue-400 to-indigo-600',
   },
 ]
@@ -62,7 +66,8 @@ const techniques = [
     icon: CheckCircle,
     title: 'Finition',
     description:
-      'Techniques de pressage professionnel pour améliorer le rendu final de la carte',
+      'Techniques de pressage professionnel pour améliorer le rendu final de' +
+      ' la carte',
   },
 ]
 ---
@@ -94,12 +99,16 @@ const techniques = [
 
 <div class="overflow-hidden">
   <section
-    style={`min-height: calc(100vh - 64px); background-image: url(${pokePattern.src}); background-size: 300px;`}
-    class="grid grid-cols-1 md:grid-cols-2 justify-center items-center overflow-hidden"
+    style={`min-height: calc(100vh - 64px);
+    background-image: url(${pokePattern.src});
+    background-size: 300px;`}
+    class="grid grid-cols-1 md:grid-cols-2 justify-center items-center
+    overflow-hidden"
   >
     <div class="flex justify-center items-center">
       <div
-        class="flex flex-col justify-center md:items-start items-center max-w-[610px] h-[550px]"
+        class="flex flex-col justify-center md:items-start items-center
+        max-w-[610px] h-[550px]"
       >
         <h1
           class="text-6xl md:text-8xl font-bold text-center md:text-left mb-2"
@@ -121,7 +130,10 @@ const techniques = [
       </div>
     </div>
     <div
-      class="h-[750px] mb-7 md:mb-0 flex justify-center items-center bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 bg-card text-card-foreground flex-col gap-6 rounded-xl border hover:shadow-xl transition-shadow"
+      class="h-[750px] mb-7 md:mb-0 flex justify-center items-center
+      bg-white sm:max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-20 relative
+      z-10 bg-card text-card-foreground flex-col gap-6 rounded-xl sm:border
+      hover:shadow-xl transition-shadow"
     >
       <div class="text-center">
         <div class="inline-block">
@@ -177,7 +189,18 @@ const techniques = [
         <div class="flex flex-wrap gap-4 justify-center">
           <button
             onclick="location.href='prestations'"
-            class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-background hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 rounded-md px-6 has-[>svg]:px-4 border-2 border-purple-600 text-purple-600 hover:bg-purple-50"
+            class="inline-flex items-center justify-center gap-2
+            whitespace-nowrap text-sm font-medium transition-all
+            disabled:pointer-events-none disabled:opacity-50
+            [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4
+            shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring
+            focus-visible:ring-ring/50 focus-visible:ring-[3px]
+            aria-invalid:ring-destructive/20
+            dark:aria-invalid:ring-destructive/40
+            aria-invalid:border-destructive bg-background
+            hover:text-accent-foreground dark:bg-input/30 dark:border-input
+            dark:hover:bg-input/50 h-10 rounded-md px-6 has-[>svg]:px-4
+            border-2 border-purple-600 text-purple-600 hover:bg-purple-50"
           >
             Nos prestations
           </button>
@@ -191,7 +214,8 @@ const techniques = [
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h2
-            class="text-5xl mb-6 bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent"
+            class="text-5xl mb-6 bg-gradient-to-r from-orange-600 to-red-600
+            bg-clip-text text-transparent"
           >
             Notre Histoire
           </h2>
@@ -219,7 +243,8 @@ const techniques = [
         </div>
         <div class="relative">
           <div
-            class="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-orange-200 to-red-200 rounded-2xl"
+            class="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br
+            from-orange-200 to-red-200 rounded-2xl"
           >
           </div>
           <div class="relative bg-white p-8 rounded-2xl shadow-xl">
@@ -264,7 +289,8 @@ const techniques = [
     style={` background-image: url(${tcgDevicesBg.src});background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;`}
-    class="tcg-devices-section relative py-24 bg-gradient-to-br from-slate-900 to-indigo-900 overflow-hidden"
+    class="tcg-devices-section relative py-24 bg-gradient-to-br from-slate-900
+    to-indigo-900 overflow-hidden"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16">
@@ -280,7 +306,9 @@ const techniques = [
             <div>
               <div
                 data-slot="card"
-                class="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300 h-full shadow-xl rounded-xl"
+                class="bg-white/10 backdrop-blur-sm border-white/20
+                hover:bg-white/20 transition-all duration-300 h-full shadow-xl
+                rounded-xl"
               >
                 <div data-slot="card-content" class="pt-8 text-center">
                   <div
@@ -319,9 +347,10 @@ const techniques = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16">
         <h2
-          class="text-5xl mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+          class="text-5xl mb-6 bg-gradient-to-r from-purple-600 to-blue-600
+          bg-clip-text text-transparent"
         >
-          Notre Processus de Restauration
+          Notre processus de restauration
         </h2>
         <p class="text-xl text-gray-700 max-w-3xl mx-auto">
           Des techniques professionnelles pour un résultat exceptionnel
@@ -332,16 +361,16 @@ const techniques = [
         {
           techniques.map((technique, index) => (
             <div class="relative">
-              <div class="absolute -top-4 -left-4 text-8xl text-purple-200/30 pointer-events-none">
-                {index + 1}
-              </div>
               <div
                 data-slot="card"
                 class="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div data-slot="card-content" class="pt-6">
                   <div class="flex justify-center mb-4">
-                    <div class="p-3 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 text-white">
+                    <div
+                      class="p-3 rounded-full bg-gradient-to-br
+                    from-purple-500 to-blue-500 text-white"
+                    >
                       <technique.icon class="w-8 h-8" />
                     </div>
                   </div>
@@ -359,7 +388,12 @@ const techniques = [
       <div class="mt-16 text-center">
         <button
           onclick="location.href='mes-realisations'"
-          class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-lg text-white inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all outline-none focus-visible:ring-2 h-10 rounded-md px-6 cursor-pointer active:scale-95"
+          class="bg-gradient-to-r from-purple-600 to-blue-600
+          hover:from-purple-700 hover:to-blue-700 shadow-lg
+          text-white inline-flex items-center justify-center gap-2
+          whitespace-nowrap text-sm font-medium transition-all outline-none
+          focus-visible:ring-2 h-10 rounded-md px-6 cursor-pointer
+          active:scale-95"
         >
           Découvrir toutes mes réalisations
         </button>
@@ -400,7 +434,8 @@ const techniques = [
   </section>
 
   <section
-    class="relative py-24 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white overflow-hidden"
+    class="relative py-24 bg-gradient-to-br from-blue-600 via-purple-600
+    to-pink-600 text-white overflow-hidden"
   >
     <div class="absolute inset-0 opacity-10">
       <div
@@ -427,13 +462,20 @@ const techniques = [
         <div class="flex flex-wrap gap-4 justify-center">
           <button
             onclick="location.href='devis'"
-            class="bg-white text-purple-600 hover:bg-gray-100 shadow-xl inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all outline-none focus-visible:ring-2 h-10 rounded-md px-6 cursor-pointer active:scale-95"
+            class="bg-white text-purple-600 hover:bg-gray-100 shadow-xl
+            inline-flex items-center justify-center gap-2 whitespace-nowrap
+            text-sm font-medium transition-all outline-none focus-visible:ring-2
+            h-10 rounded-md px-6 cursor-pointer active:scale-95"
           >
             Demander un devis gratuit
           </button>
           <button
             onclick="location.href='about'"
-            class="border-2 border-white text-white hover:bg-white/10 shadow-xl inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all outline-none focus-visible:ring-2 h-10 rounded-md px-6 cursor-pointer active:scale-95"
+            class="border-2 border-white text-white hover:bg-white/10
+            shadow-xl inline-flex items-center justify-center gap-2
+            whitespace-nowrap text-sm font-medium transition-all outline-none
+            focus-visible:ring-2 h-10 rounded-md px-6 cursor-pointer
+            active:scale-95"
           >
             En savoir plus sur nous
           </button>
