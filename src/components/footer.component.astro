@@ -4,6 +4,9 @@ import Phone from '../assets/icons/phone.svg'
 import MapPin from '../assets/icons/map-pin.svg'
 import FixMyCard from '../assets/illustrations/fix-my-card.png'
 import { Image } from 'astro:assets'
+import Fix from '../assets/illustrations/fix.png'
+import My from '../assets/illustrations/my.png'
+import Card from '../assets/illustrations/card.png'
 ---
 
 <footer class="bg-gray-900 text-white">
@@ -11,18 +14,56 @@ import { Image } from 'astro:assets'
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div>
         <div class="flex items-center space-x-2 mb-4">
-          <Image
-            id="fixMyCard"
-            src={FixMyCard}
-            alt="FixMycard"
-            fetchpriority="high"
-            quality={80}
-            width={48}
-            height={48}
-            format="webp"
-            class="h-12 w-auto"
-          />
-          <span class="text-xl text-blue-400">Fix My Card</span>
+          <a class="flex items-center">
+            <Image
+              id="fixMyCard"
+              src={FixMyCard}
+              alt="FixMycard"
+              fetchpriority="high"
+              quality={90}
+              width={48}
+              height={48}
+              format="webp"
+              class="mr-3"
+            />
+            <Image
+              id="fix"
+              src={Fix}
+              style="height:27px; width:47px;"
+              alt="Fix"
+              fetchpriority="high"
+              quality={80}
+              width={100}
+              fit="contain"
+              position="center"
+              format="webp"
+              class="mr-1"
+            />
+            <Image
+              id="my"
+              src={My}
+              alt="My"
+              style="height:31px; width:44px;"
+              fetchpriority="high"
+              quality={80}
+              width={100}
+              format="webp"
+              position="center"
+              fit="contain"
+            />
+            <Image
+              id="card"
+              fit="contain"
+              src={Card}
+              alt="card"
+              style="height:34px; width:64px;"
+              fetchpriority="high"
+              quality={80}
+              width={100}
+              position="center"
+              format="webp"
+            />
+          </a>
         </div>
         <p class="text-gray-400">
           Expert en restauration de cartes Pokémon. Redonnez vie à vos cartes
@@ -35,24 +76,22 @@ import { Image } from 'astro:assets'
         <div class="space-y-2 text-gray-400">
           <div class="flex items-center space-x-2">
             <Mail height="18" width="18" />
-            <span>contact@fixmycard.fr</span>
+            <span>fixmycard34@gmail.com</span>
           </div>
           <div class="flex items-center space-x-2">
             <Phone height="18" width="18" />
-            <span>+33 6 06 06 06 06</span>
+            <span>+33 6 99 75 74 26</span>
           </div>
           <div class="flex items-center space-x-2">
             <MapPin height="18" width="18" />
-            <span>Montpellier, France</span>
+            <span>St Jean de Vedas, France</span>
           </div>
         </div>
       </div>
       <div>
         <h3 class="text-lg mb-4">Horaires</h3>
         <div class="space-y-1 text-gray-400">
-          <p>Lundi - Vendredi: 9h - 18h</p>
-          <p>Samedi: 10h - 16h</p>
-          <p>Dimanche: Fermé</p>
+          <p>7/7: 9h - 22h</p>
         </div>
       </div>
     </div>
