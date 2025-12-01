@@ -62,7 +62,9 @@ const OrderStatusChecker = (props: Props) => {
 
     // Sinon faire l'appel API
     try {
-      const response = await fetch('/.netlify/functions/getCommandStatus')
+      const response = await fetch(
+        `${import.meta.env.DEV ? 'http://localhost:8888' : ''}/.netlify/functions/getCommandStatus`
+      )
 
       if (!response.ok) {
         throw new Error('Failed to fetch order status')
