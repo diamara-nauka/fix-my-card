@@ -1,60 +1,22 @@
 import { createSignal, type JSX, onMount, Show } from 'solid-js'
-
-type OrderStatusResponse = {
-  ordersOpen: boolean
-}
+import {
+  fetchOrderStatus,
+  getCachedOrderStatus,
+  setCachedOrderStatus,
+} from '../../utils/order-status-cache'
 
 type LoadingState = 'loading' | 'open' | 'closed' | 'error'
-
-type CachedData = {
-  data: OrderStatusResponse
-  timestamp: number
-}
 
 type Props = {
   children: JSX.Element
 }
 
-const CACHE_KEY = 'orderStatus'
-const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
-
 const OrderStatusChecker = (props: Props) => {
   const [status, setStatus] = createSignal<LoadingState>('loading')
 
-  const getCachedStatus = (): OrderStatusResponse | null => {
-    try {
-      const cached = localStorage.getItem(CACHE_KEY)
-      if (!cached) return null
-
-      const { data, timestamp }: CachedData = JSON.parse(cached)
-
-      if (Date.now() - timestamp < CACHE_DURATION) {
-        return data
-      }
-
-      // Cache expiré
-      localStorage.removeItem(CACHE_KEY)
-      return null
-    } catch {
-      return null
-    }
-  }
-
-  const setCachedStatus = (data: OrderStatusResponse) => {
-    try {
-      const cacheData: CachedData = {
-        data,
-        timestamp: Date.now(),
-      }
-      localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData))
-    } catch (error) {
-      console.error('Error caching order status:', error)
-    }
-  }
-
   const checkOrderStatus = async () => {
-    // Vérifier le cache d'abord
-    const cached = getCachedStatus()
+    // Vérifier le cache
+    const cached = getCachedOrderStatus()
     if (cached) {
       setStatus(cached.ordersOpen ? 'open' : 'closed')
       return
@@ -62,19 +24,8 @@ const OrderStatusChecker = (props: Props) => {
 
     // Sinon faire l'appel API
     try {
-      const response = await fetch(
-        `${import.meta.env.DEV ? 'http://localhost:8888' : ''}/.netlify/functions/getCommandStatus`
-      )
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch order status')
-      }
-
-      const data: OrderStatusResponse = await response.json()
-
-      // Mettre en cache
-      setCachedStatus(data)
-
+      const data = await fetchOrderStatus()
+      setCachedOrderStatus(data)
       setStatus(data.ordersOpen ? 'open' : 'closed')
     } catch (error) {
       console.error('Error checking order status:', error)
@@ -88,7 +39,6 @@ const OrderStatusChecker = (props: Props) => {
 
   return (
     <>
-      {/* Loading State */}
       <Show when={status() === 'loading'}>
         <div class="flex items-center gap-3 text-gray-600">
           <svg
@@ -115,7 +65,6 @@ const OrderStatusChecker = (props: Props) => {
         </div>
       </Show>
 
-      {/* Closed/Error Message */}
       <Show when={status() === 'closed' || status() === 'error'}>
         <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
           <p class="text-lg text-yellow-800">
@@ -126,7 +75,6 @@ const OrderStatusChecker = (props: Props) => {
         </div>
       </Show>
 
-      {/* Form Container */}
       <Show when={status() === 'open'}>{props.children}</Show>
     </>
   )
