@@ -1,6 +1,4 @@
-type OrderStatusResponse = {
-  ordersOpen: boolean
-}
+import type { OrderStatusResponse } from './order-status-api.ts'
 
 type CachedData = {
   data: OrderStatusResponse
@@ -40,17 +38,10 @@ export const setCachedOrderStatus = (data: OrderStatusResponse): void => {
   }
 }
 
-export const fetchOrderStatus = async (): Promise<OrderStatusResponse> => {
-  const isDev = import.meta.env.DEV
-  const apiUrl = isDev
-    ? 'http://localhost:8888/.netlify/functions/getCommandStatus'
-    : '/.netlify/functions/getCommandStatus'
-
-  const response = await fetch(apiUrl)
-
-  if (!response.ok) {
-    throw new Error('Failed to fetch order status')
+export const clearOrderStatusCache = (): void => {
+  try {
+    localStorage.removeItem(CACHE_KEY)
+  } catch (error) {
+    console.error('Error clearing cache:', error)
   }
-
-  return response.json()
 }

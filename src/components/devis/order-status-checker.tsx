@@ -1,45 +1,18 @@
-import { createSignal, type JSX, onMount, Show } from 'solid-js'
-import {
-  fetchOrderStatus,
-  getCachedOrderStatus,
-  setCachedOrderStatus,
-} from '../../utils/order-status-cache'
-
-type LoadingState = 'loading' | 'open' | 'closed' | 'error'
+import { type JSX, onMount, Show } from 'solid-js'
+import { orderStatusStore } from '../../stores/order-status.store.ts'
 
 type Props = {
   children: JSX.Element
 }
 
 const OrderStatusChecker = (props: Props) => {
-  const [status, setStatus] = createSignal<LoadingState>('loading')
-
-  const checkOrderStatus = async () => {
-    // Vérifier le cache
-    const cached = getCachedOrderStatus()
-    if (cached) {
-      setStatus(cached.ordersOpen ? 'open' : 'closed')
-      return
-    }
-
-    // Sinon faire l'appel API
-    try {
-      const data = await fetchOrderStatus()
-      setCachedOrderStatus(data)
-      setStatus(data.ordersOpen ? 'open' : 'closed')
-    } catch (error) {
-      console.error('Error checking order status:', error)
-      setStatus('error')
-    }
-  }
-
   onMount(() => {
-    checkOrderStatus()
+    orderStatusStore.load()
   })
 
   return (
     <>
-      <Show when={status() === 'loading'}>
+      <Show when={orderStatusStore.statusSignal() === 'loading'}>
         <div class="flex items-center gap-3 text-gray-600">
           <svg
             class="animate-spin h-5 w-5"
@@ -65,17 +38,24 @@ const OrderStatusChecker = (props: Props) => {
         </div>
       </Show>
 
-      <Show when={status() === 'closed' || status() === 'error'}>
+      <Show
+        when={
+          orderStatusStore.statusSignal() === 'closed' ||
+          orderStatusStore.statusSignal() === 'error'
+        }
+      >
         <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
           <p class="text-lg text-yellow-800">
-            {status() === 'error'
+            {orderStatusStore.statusSignal() === 'error'
               ? 'Une erreur est survenue. Veuillez réessayer plus tard.'
               : 'Les commandes sont actuellement fermées. Veuillez revenir plus tard.'}
           </p>
         </div>
       </Show>
 
-      <Show when={status() === 'open'}>{props.children}</Show>
+      <Show when={orderStatusStore.statusSignal() === 'open'}>
+        {props.children}
+      </Show>
     </>
   )
 }
