@@ -1,38 +1,88 @@
-import { createSignal, onMount, Show, type JSX } from 'solid-js';
+import { createSignal, type JSX, onMount, Show } from 'solid-js'
 
 type OrderStatusResponse = {
-  ordersOpen: boolean;
-};
+  ordersOpen: boolean
+}
 
-type LoadingState = 'loading' | 'open' | 'closed' | 'error';
+type LoadingState = 'loading' | 'open' | 'closed' | 'error'
+
+type CachedData = {
+  data: OrderStatusResponse
+  timestamp: number
+}
 
 type Props = {
-  children: JSX.Element;
-};
+  children: JSX.Element
+}
+
+const CACHE_KEY = 'orderStatus'
+const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
 
 const OrderStatusChecker = (props: Props) => {
-  const [status, setStatus] = createSignal<LoadingState>('loading');
+  const [status, setStatus] = createSignal<LoadingState>('loading')
 
-  const checkOrderStatus = async () => {
+  const getCachedStatus = (): OrderStatusResponse | null => {
     try {
-      const response = await fetch('/.netlify/functions/getCommandStatus');
+      const cached = localStorage.getItem(CACHE_KEY)
+      if (!cached) return null
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch order status');
+      const { data, timestamp }: CachedData = JSON.parse(cached)
+
+      if (Date.now() - timestamp < CACHE_DURATION) {
+        return data
       }
 
-      const data: OrderStatusResponse = await response.json();
-
-      setStatus(data.ordersOpen ? 'open' : 'closed');
-    } catch (error) {
-      console.error('Error checking order status:', error);
-      setStatus('error');
+      // Cache expiré
+      localStorage.removeItem(CACHE_KEY)
+      return null
+    } catch {
+      return null
     }
-  };
+  }
+
+  const setCachedStatus = (data: OrderStatusResponse) => {
+    try {
+      const cacheData: CachedData = {
+        data,
+        timestamp: Date.now(),
+      }
+      localStorage.setItem(CACHE_KEY, JSON.stringify(cacheData))
+    } catch (error) {
+      console.error('Error caching order status:', error)
+    }
+  }
+
+  const checkOrderStatus = async () => {
+    // Vérifier le cache d'abord
+    const cached = getCachedStatus()
+    if (cached) {
+      setStatus(cached.ordersOpen ? 'open' : 'closed')
+      return
+    }
+
+    // Sinon faire l'appel API
+    try {
+      const response = await fetch('/.netlify/functions/getCommandStatus')
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch order status')
+      }
+
+      const data: OrderStatusResponse = await response.json()
+
+      // Mettre en cache
+      setCachedStatus(data)
+
+      setStatus(data.ordersOpen ? 'open' : 'closed')
+    } catch (error) {
+      console.error('Error checking order status:', error)
+      setStatus('error')
+    }
+  }
 
   onMount(() => {
-    checkOrderStatus();
-  });
+    checkOrderStatus()
+  })
 
   return (
     <>
@@ -75,11 +125,9 @@ const OrderStatusChecker = (props: Props) => {
       </Show>
 
       {/* Form Container */}
-      <Show when={status() === 'open'}>
-        {props.children}
-      </Show>
+      <Show when={status() === 'open'}>{props.children}</Show>
     </>
-  );
-};
+  )
+}
 
-export default OrderStatusChecker;
+export default OrderStatusChecker
