@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import ImageModal from './image-modal.tsx'
+import ImageCarrousel from '../../components/accueil/image-carrousel.tsx'
 import Flagadoss from '../../assets/illustrations/flagadoss.jpeg'
 import Rayquaza from '../../assets/illustrations/rayquaza.jpeg'
 import Drac from '../../assets/illustrations/drac.jpeg'
@@ -59,6 +59,8 @@ const projects = [
     after: 'État: Restauration exceptionnelle',
   },
 ]
+
+const images = projects.map((p) => p.image.src)
 ---
 
 <div class="py-12">
@@ -110,5 +112,5 @@ const projects = [
       }
     </div>
   </div>
-  <ImageModal client:load />
+  <ImageCarrousel images={images} client:load />
 </div>
