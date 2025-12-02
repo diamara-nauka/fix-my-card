@@ -76,7 +76,10 @@ const processes = [
 ---
 
 <div class="py-12">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col
+    md:items-stretch items-center"
+  >
     <div class="text-center mb-12">
       <h1 class="text-5xl mb-4 text-gray-900">Mes prestations</h1>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -92,9 +95,10 @@ const processes = [
         services.map((service) => (
           <div
             data-slot="card"
-            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border transition-shadow"
+            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl
+            border transition-shadow"
           >
-            <div class="flex flex-col gap-1.5 h-[140px] px-6 pt-6 ">
+            <div class="flex flex-col gap-1.5 h-[160px] md:h-[140px] px-6 pt-6 ">
               <div class="mb-4">
                 <service.icon class="w-10 h-10 text-blue-600" />
               </div>
@@ -140,7 +144,10 @@ const processes = [
         {
           processes.map((process) => (
             <div class="text-center">
-              <div class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+              <div
+                class="bg-blue-600 text-white w-12 h-12 rounded-full flex
+              items-center justify-center mx-auto mb-4 text-xl"
+              >
                 {process.index}
               </div>
               <h3 class="text-xl mb-2">{process.title}</h3>
