@@ -1,7 +1,9 @@
 import { defineConfig } from 'astro/config'
 import solid from '@astrojs/solid-js'
 import tailwind from '@astrojs/tailwind'
+import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
-  integrations: [solid(), tailwind()],
+  site: 'https://fixmycard.fr',
+  integrations: [solid(), tailwind(), sitemap()],
 })
