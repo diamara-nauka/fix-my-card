@@ -3,6 +3,8 @@ import Heart from '../../assets/icons/heart.svg'
 import Target from '../../assets/icons/target.svg'
 import Users from '../../assets/icons/users.svg'
 import Award from '../../assets/icons/award.svg'
+import Bureau from '../../assets/illustrations/about/bureau.jpg'
+import { Image } from 'astro:assets'
 
 const values = [
   {
@@ -76,9 +78,11 @@ const timeline = [
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-      <div class="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-        <img
-          src="https://images.unsplash.com/photo-1728379824591-8baf4afae695?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0b3JhdGlvbiUyMHRvb2xzJTIwd29ya3NwYWNlfGVufDF8fHx8MTc2MzQ1NjI2NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      <div class="relative h-[732px] rounded-lg overflow-hidden shadow-xl">
+        <Image
+          src={Bureau}
+          width={584}
+          quality={90}
           alt="Espace de travail de restauration"
           class="w-full h-full object-cover"
         />

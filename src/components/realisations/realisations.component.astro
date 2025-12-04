@@ -6,48 +6,46 @@ import Rayquaza from '../../assets/illustrations/realisations/rayquaza.jpg'
 import Drac from '../../assets/illustrations/realisations/dracaufeu.jpg'
 import Alakazam from '../../assets/illustrations/realisations/alakazam.jpg'
 import Tortank from '../../assets/illustrations/realisations/tortank.jpg'
+import Minidraco from '../../assets/illustrations/minidraco_blue.png'
+import Draco from '../../assets/illustrations/draco_blue.png'
+import Dracolosse from '../../assets/illustrations/dracoloss_blue.png'
 
 const projects = [
   {
     title: 'Flagadoss - Southern Islands',
-    service: 'Nettoyage professionnel',
+    description: 'Nettoyage professionnel',
+    service: Minidraco,
     image: Flagadoss,
-    description: 'Nettoyage, défroissage et réparation des bords',
     before: 'État: présence de saleté, présence de micro rayures',
-    after: 'État: Comme neuf, surface plane, couleurs vives',
   },
   {
     title: 'Rayquaza ex - Fantômes Holon',
-    service: 'Restauration totale',
+    description: 'Restauration totale',
+    service: Dracolosse,
     image: Rayquaza,
-    description: 'Aplatissement et élimination des plis',
     before:
       'État: présence de saletés, présence de micro rayure, pliures importantes',
-    after: 'État: Surface parfaitement plane',
   },
   {
     title: 'Dracaufeu Radieux stamp - Zénith Suprême',
-    service: 'Correction d’un endommagement précis',
+    description: 'Correction d’un endommagement précis',
+    service: Draco,
     image: Drac,
-    description: 'Réparation minutieuse des coins et bordures',
     before: 'État: présence d’une tranche relevée',
-    after: 'État: Coins restaurés, finition invisible -PSA 10',
   },
   {
     title: 'Alakazam star ex - Gardiens de Cristal',
-    service: 'Correction d’un endommagement précis',
+    description: 'Correction d’un endommagement précis',
+    service: Draco,
     image: Alakazam,
-    description: 'Nettoyage professionnel et encapsulation',
     before: 'État: pliure sur la partie holographique',
-    after: 'État: Impeccable, protégée sous grade',
   },
   {
     title: 'Dracolosse V - Évolution Céleste',
-    service: 'Restauration totale',
+    service: Dracolosse,
     image: Tortank,
-    description: 'Ravivage des couleurs et nettoyage',
+    description: 'Restauration totale',
     before: 'État: Pliure importante, enfoncements',
-    after: 'État: Couleurs éclatantes, aspect rajeuni',
   },
 ]
 
@@ -78,8 +76,8 @@ const images = projects.map((p) => p.image.src)
                 class="w-full h-full object-cover"
               />
               <div class="absolute top-4 right-4">
-                <span class="inline-flex items-center justify-center rounded-md px-2 py-0.5 text-white bg-blue-600">
-                  {project.service}
+                <span class="inline-flex items-center justify-center rounded-md px-2 py-0.5">
+                  <Image src={project.service} width={54} alt="icone" />
                 </span>
               </div>
             </div>
@@ -90,10 +88,6 @@ const images = projects.map((p) => p.image.src)
                 <div class="flex items-start">
                   <span class="text-red-600 mr-2">Avant:</span>
                   <span class="text-gray-700">{project.before}</span>
-                </div>
-                <div class="flex items-start">
-                  <span class="text-green-600 mr-2">Après:</span>
-                  <span class="text-gray-700">{project.after}</span>
                 </div>
               </div>
             </div>
