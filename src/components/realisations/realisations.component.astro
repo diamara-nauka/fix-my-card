@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets'
 import ImageCarrousel from '../../components/accueil/image-carrousel.tsx'
-import Flagadoss from '../../assets/illustrations/flagadoss.jpeg'
-import Rayquaza from '../../assets/illustrations/rayquaza.jpeg'
-import Drac from '../../assets/illustrations/drac.jpeg'
-import Alakazam from '../../assets/illustrations/alakazam.jpeg'
-import Tortank from '../../assets/illustrations/tortank.jpeg'
+import Flagadoss from '../../assets/illustrations/realisations/flagadoss.jpg'
+import Rayquaza from '../../assets/illustrations/realisations/rayquaza.jpg'
+import Drac from '../../assets/illustrations/realisations/dracaufeu.jpg'
+import Alakazam from '../../assets/illustrations/realisations/alakazam.jpg'
+import Tortank from '../../assets/illustrations/realisations/tortank.jpg'
 
 const projects = [
   {
@@ -72,9 +72,8 @@ const images = projects.map((p) => p.image.src)
                 data-clickable-image
                 src={project.image}
                 alt={project.title}
-                quality={80}
-                width={700}
-                height={300}
+                quality={90}
+                width={256}
                 format="webp"
                 class="w-full h-full object-cover"
               />
