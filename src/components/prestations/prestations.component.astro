@@ -1,13 +1,14 @@
 ---
-import Droplet from '../../assets/icons/droplet.svg'
-import Refresh from '../../assets/icons/refresh.svg'
-import Scissor from '../../assets/icons/scissor.svg'
+import Minidraco from '../../assets/illustrations/minidraco_blue.png'
+import Draco from '../../assets/illustrations/draco_blue.png'
+import Dracolosse from '../../assets/illustrations/dracoloss_blue.png'
 import CircleCheck from '../../assets/icons/circle-check.svg'
+import { Image } from 'astro:assets'
 
 const services = [
   {
-    icon: Droplet,
-    title: 'Formule Carapuce',
+    icon: Minidraco,
+    title: 'Formule Mini Draco',
     description: 'Nettoyage professionnel et correction des micro rayures.',
     price: 'A partir de 10€ + 6.99€ en livraison*',
     features: [
@@ -18,29 +19,27 @@ const services = [
     ],
   },
   {
-    icon: Refresh,
-    title: 'Formule Métamorphe',
-    description:
-      'Contenue de la formule carapuce + Correction d’un enfoncement ou d’une pliure',
+    icon: Draco,
+    title: 'Formule Draco',
+    description: 'Correction d’un endommagement précis et nettoyage',
     price: 'A partir de 20€ + 6.99€ en livraison*',
     features: [
-      'Contenue de la formule Carapuce',
-      'Contenu de la formule Métamorphe',
-      'Amélioration de tous les endommagements présents sur la carte',
+      'Contenu de la formule Mini Draco',
+      'Amélioration d’un endommagement spécifique',
       'Produits spécialisés et techniques adaptées aux cartes pokémons',
       'Résultats durables',
     ],
   },
   {
-    icon: Scissor,
-    title: 'Formule Sulfura',
-    description: 'Restauration totale de la carte',
+    icon: Dracolosse,
+    title: 'Formule Dracolosse',
+    description: 'Pour une carte qui a de nombreux endommagements',
     price: 'A partir de 35€ + 6.99€ en livraison*',
     features: [
-      'Le contenu de la Formule 1',
-      'Le contenu de la Formule 2',
+      'Le contenu de la Formule Mini Draco',
+      'Le contenu de la Formule Draco',
+      'Restauration totale de la carte',
       'Amélioration des zones endommagées',
-      "Frais d'expedition retour offert**",
     ],
   },
 ]
@@ -100,7 +99,15 @@ const processes = [
           >
             <div class="flex flex-col gap-1.5 h-[160px] md:h-[140px] px-6 pt-6 ">
               <div class="mb-4">
-                <service.icon class="w-10 h-10 text-blue-600" />
+                <Image
+                  src={service.icon}
+                  quality={80}
+                  alt="test"
+                  width={40}
+                  height={40}
+                  format="webp"
+                  class="w-10 h-10 "
+                />
               </div>
               <h4 class="leading-none">{service.title}</h4>
               <p class="text-gray-500 text-muted-foreground">
@@ -109,7 +116,9 @@ const processes = [
             </div>
             <div data-slot="card-content" class="px-6 [&:last-child]:pb-6">
               <div class="mb-4">
-                <span class="text-2xl text-blue-600">{service.price}</span>
+                <span class="text-2xl font-medium text-blue-600">
+                  {service.price}
+                </span>
               </div>
               <ul class="space-y-2">
                 {service.features.map((feature) => (
@@ -135,9 +144,9 @@ const processes = [
       <a class="underline" href="/">Voir cgv.</a>
     </div>
     <div
-      class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-8 mb-12"
+      class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg p-8 mb-12 text-white"
     >
-      <h2 class="text-3xl mb-8 text-center text-gray-900">
+      <h2 class="text-3xl mb-8 text-center text-white">
         Le processus de commande
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
@@ -145,13 +154,13 @@ const processes = [
           processes.map((process) => (
             <div class="text-center">
               <div
-                class="bg-blue-600 text-white w-12 h-12 rounded-full flex
+                class="bg-white  text-black w-12 h-12 rounded-full flex
               items-center justify-center mx-auto mb-4 text-xl"
               >
                 {process.index}
               </div>
               <h3 class="text-xl mb-2">{process.title}</h3>
-              <p class="text-gray-700">{process.subtitle}</p>
+              <p class="text-gray-300">{process.subtitle}</p>
             </div>
           ))
         }
@@ -165,12 +174,18 @@ const processes = [
       </p>
       <a
         href="/devis"
-        class="w-60 h-10 bg-gradient-to-r from-purple-600 to-blue-600
-          hover:from-purple-700 hover:to-blue-700 shadow-lg
-          text-white inline-flex items-center justify-center gap-2
-          whitespace-nowrap text-sm font-medium transition-all outline-none
-          focus-visible:ring-2 rounded-md px-6 cursor-pointer
-          active:scale-95"
+        class="inline-flex items-center justify-center gap-2
+            whitespace-nowrap text-sm font-medium transition-all
+            disabled:pointer-events-none disabled:opacity-50
+            [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4
+            shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring
+            focus-visible:ring-ring/50 focus-visible:ring-[3px]
+            aria-invalid:ring-destructive/20
+            dark:aria-invalid:ring-destructive/40
+            aria-invalid:border-destructive bg-background
+            hover:text-accent-foreground dark:bg-input/30 dark:border-input
+            dark:hover:bg-input/50 h-10 rounded-md px-6 has-[>svg]:px-4
+            border-2 border-purple-600 text-purple-600 hover:bg-purple-50"
       >
         Demander un devis gratuit
       </a>

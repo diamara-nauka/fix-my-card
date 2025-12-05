@@ -1,66 +1,156 @@
 ---
-import { Image } from 'astro:assets'
-import ImageCarrousel from '../../components/accueil/image-carrousel.tsx'
-import Flagadoss from '../../assets/illustrations/flagadoss.jpeg'
-import Rayquaza from '../../assets/illustrations/rayquaza.jpeg'
-import Drac from '../../assets/illustrations/drac.jpeg'
-import Alakazam from '../../assets/illustrations/alakazam.jpeg'
-import Tortank from '../../assets/illustrations/tortank.jpeg'
-import Dracolo from '../../assets/illustrations/dracolo.jpeg'
+import { Image, getImage } from 'astro:assets'
+import ImageCarrousel from './image-carrousel.tsx'
+import Flagadoss from '../../assets/illustrations/realisations/flagadoss.jpg'
+import Rayquaza from '../../assets/illustrations/realisations/rayquaza.jpg'
+import Drac from '../../assets/illustrations/realisations/dracaufeu.jpg'
+import Alakazam from '../../assets/illustrations/realisations/alakazam.jpg'
+import Dracolosse from '../../assets/illustrations/realisations/dracolosse.jpg'
+import Draco from '../../assets/illustrations/realisations/draco.png'
+import Lugia from '../../assets/illustrations/realisations/lugia.png'
+import Latios from '../../assets/illustrations/realisations/latios.png'
+import Rayquaza2 from '../../assets/illustrations/realisations/rayquaza_2.png'
+import MinidracoBlue from '../../assets/illustrations/minidraco_blue.png'
+import DracoBlue from '../../assets/illustrations/draco_blue.png'
+import DracolosseBlue from '../../assets/illustrations/dracoloss_blue.png'
+
+const loadCarouselImages = async (
+  folderName: string,
+  optimizedIllustrationSrc: string
+) => {
+  const carouselImages = []
+
+  // Ajouter l'image d'illustration déjà optimisée en première position
+  carouselImages.push(optimizedIllustrationSrc)
+
+  // Charger les autres images du carrousel
+  const images = import.meta.glob(
+    '../../assets/illustrations/realisations/carrousel/**/*.{jpg,jpeg,png}'
+  )
+
+  for (const path in images) {
+    if (path.includes(`/carrousel/${folderName}/`)) {
+      const image = await images[path]()
+      const optimizedImage = await getImage({
+        src: (image as any).default,
+        format: 'webp',
+        quality: 80,
+        width: 768,
+      })
+      carouselImages.push(optimizedImage.src)
+    }
+  }
+
+  return carouselImages
+}
 
 const projects = [
   {
-    title: 'Flagadoss - Neo Genesis',
-    service: 'Restauration complète',
+    title: 'Flagadoss - Southern Islands',
+    description: 'Nettoyage professionnel',
+    service: MinidracoBlue,
     image: Flagadoss,
-    description: 'Nettoyage, défroissage et réparation des bords',
-    before: 'État: Usé, plis visibles, coins abîmés',
-    after: 'État: Comme neuf, surface plane, couleurs vives',
+    carouselFolder: 'flagadoss',
+    before: 'État: présence de saleté, présence de micro rayures',
   },
   {
-    title: 'Rayquaza - EX : Deoxys',
-    service: 'Défroissage expert',
+    title: 'Rayquaza ex - Fantômes Holon',
+    description: 'Restauration totale',
+    service: DracolosseBlue,
     image: Rayquaza,
-    description: 'Aplatissement et élimination des plis',
-    before: 'État: Plusieurs plis marqués',
-    after: 'État: Surface parfaitement plane',
+    carouselFolder: 'rayquaza',
+    before:
+      'État: présence de saletés, présence de micro rayure, pliures importantes',
   },
   {
-    title: 'Dracaufeu Radieux - Zénith Suprême',
-    service: 'Réparation des bords',
+    title: 'Dracaufeu Radieux stamp - Zénith Suprême',
+    description: 'Correction d’un endommagement précis',
+    service: DracoBlue,
     image: Drac,
-    description: 'Réparation minutieuse des coins et bordures',
-    before: 'État: Coins très abîmés, bordures effilochées - PSA 7',
-    after: 'État: Coins restaurés, finition invisible -PSA 10',
+    carouselFolder: 'dracaufeu',
+    before: 'État: présence d’une tranche relevée',
   },
   {
-    title: 'Pikachu Promo - 2001',
-    service: 'Nettoyage et protection',
+    title: 'Alakazam star ex - Gardiens de Cristal',
+    description: 'Correction d’un endommagement précis',
+    service: DracoBlue,
     image: Alakazam,
-    description: 'Nettoyage professionnel et encapsulation',
-    before: 'État: Traces de manipulation, légèrement sale',
-    after: 'État: Impeccable, protégée sous grade',
+    carouselFolder: 'alakazam',
+    before: 'État: pliure sur la partie holographique',
   },
   {
-    title: 'Collection Base Set - 1999',
-    service: 'Restauration de couleurs',
-    image: Tortank,
-    description: 'Ravivage des couleurs et nettoyage',
-    before: 'État: Couleurs ternes, aspect vieilli',
-    after: 'État: Couleurs éclatantes, aspect rajeuni',
+    title: 'Dracolosse V - Évolution Céleste',
+    service: DracolosseBlue,
+    image: Dracolosse,
+    carouselFolder: 'dracolosse',
+    description: 'Restauration totale',
+    before: 'État: Pliure importante, enfoncements',
   },
-
   {
-    title: 'Léviator Shiny - Set Tempête',
-    service: 'Restauration complète',
-    image: Dracolo,
-    description: 'Service complet: nettoyage, réparation, protection',
-    before: 'État: Très abîmé, multiple dommages',
-    after: 'État: Restauration exceptionnelle',
+    title: 'Draco d’Erika - Gym Heroes',
+    service: DracolosseBlue,
+    image: Draco,
+    carouselFolder: 'draco',
+    description: 'Restauration totale',
+    before: 'État: Traces de stylo rose, pliures importantes, enfoncements',
+  },
+  {
+    title: 'Lugia V - Évolution Céleste',
+    service: DracolosseBlue,
+    image: Lugia,
+    carouselFolder: 'lugia',
+    description: 'Restauration totale',
+    before: 'État: Pliure importante, enfoncements',
+  },
+  {
+    title: 'Latios V - Évolution Céleste',
+    service: DracolosseBlue,
+    image: Latios,
+    carouselFolder: 'latios',
+    description: 'Restauration totale',
+    before: 'État: Pliure importante, enfoncements',
+  },
+  {
+    title: 'Rayquaza2 V - Évolution Céleste',
+    service: DracolosseBlue,
+    image: Rayquaza2,
+    carouselFolder: 'rayquaza_2',
+    description: 'Restauration totale',
+    before: 'État: Pliure importante, enfoncements',
   },
 ]
 
-const images = projects.map((p) => p.image.src)
+// Pré-optimiser les images d'illustration et charger les images de carrousel
+const projectsWithCarousel = await Promise.all(
+  projects.map(async (project) => {
+    // Optimiser l'image d'illustration une seule fois
+    const optimizedIllustration = await getImage({
+      src: project.image,
+      format: 'webp',
+      quality: 80,
+      width: 256,
+    })
+
+    const optimizedIllustrationCarrousel = await getImage({
+      src: project.image,
+      format: 'webp',
+      quality: 80,
+      width: 768,
+    })
+
+    return {
+      ...project,
+      optimizedImage: optimizedIllustration.src,
+      carouselImages: await loadCarouselImages(
+        project.carouselFolder,
+        optimizedIllustrationCarrousel.src
+      ),
+    }
+  })
+)
+
+// Créer un tableau des images de carrousel pour chaque projet
+const carouselData = projectsWithCarousel.map((p) => p.carouselImages)
 ---
 
 <div class="py-12">
@@ -71,25 +161,21 @@ const images = projects.map((p) => p.image.src)
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
       {
-        projects.map((project) => (
+        projectsWithCarousel.map((project) => (
           <div
             data-slot="card"
-            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border overflow-hidden hover:shadow-xl transition-shadow"
+            data-clickable-image
+            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
           >
-            <div class="relative h-64 overflow-hidden cursor-pointer">
-              <Image
-                data-clickable-image
-                src={project.image}
+            <div class="relative h-64 overflow-hidden">
+              <img
+                src={project.optimizedImage}
                 alt={project.title}
-                quality={80}
-                width={700}
-                height={300}
-                format="webp"
                 class="w-full h-full object-cover"
               />
               <div class="absolute top-4 right-4">
-                <span class="inline-flex items-center justify-center rounded-md px-2 py-0.5 text-white bg-blue-600">
-                  {project.service}
+                <span class="inline-flex items-center justify-center rounded-full px-2 py-0.5 w-[54px] h-[54px] bg-white">
+                  <Image src={project.service} width={54} alt="icone" />
                 </span>
               </div>
             </div>
@@ -101,10 +187,6 @@ const images = projects.map((p) => p.image.src)
                   <span class="text-red-600 mr-2">Avant:</span>
                   <span class="text-gray-700">{project.before}</span>
                 </div>
-                <div class="flex items-start">
-                  <span class="text-green-600 mr-2">Après:</span>
-                  <span class="text-gray-700">{project.after}</span>
-                </div>
               </div>
             </div>
           </div>
@@ -112,5 +194,5 @@ const images = projects.map((p) => p.image.src)
       }
     </div>
   </div>
-  <ImageCarrousel images={images} client:load />
+  <ImageCarrousel carouselData={carouselData} client:load />
 </div>

@@ -3,6 +3,8 @@ import Heart from '../../assets/icons/heart.svg'
 import Target from '../../assets/icons/target.svg'
 import Users from '../../assets/icons/users.svg'
 import Award from '../../assets/icons/award.svg'
+import Bureau from '../../assets/illustrations/about/bureau.jpg'
+import { Image } from 'astro:assets'
 
 const values = [
   {
@@ -71,15 +73,16 @@ const timeline = [
     <div class="text-center mb-12">
       <h1 class="text-5xl mb-4 text-gray-900">À propos</h1>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        L'histoire d'une passion devenue expertise professionnelle
+        La continuité d’une passion
       </p>
     </div>
 
-    {/* Hero Section with Image */}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-      <div class="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
-        <img
-          src="https://images.unsplash.com/photo-1728379824591-8baf4afae695?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZXN0b3JhdGlvbiUyMHRvb2xzJTIwd29ya3NwYWNlfGVufDF8fHx8MTc2MzQ1NjI2NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      <div class="relative h-[732px] rounded-lg overflow-hidden shadow-xl">
+        <Image
+          src={Bureau}
+          width={584}
+          quality={90}
           alt="Espace de travail de restauration"
           class="w-full h-full object-cover"
         />
@@ -88,132 +91,56 @@ const timeline = [
         <h2 class="text-3xl mb-4 text-gray-900">Mon histoire</h2>
         <div class="space-y-4 text-gray-700">
           <p>
-            Bonjour, je suis Alexandre, fondateur de PokéRestore. Ma passion
-            pour les cartes Pokémon a commencé en 1999, quand j'ai ouvert mon
-            premier booster lors de la sortie du jeu en France.
+            Bonjour à toutes et à tous ! Je m’appelle Charlotte Vandenbroucke,
+            j’ai commencé à collectionner les cartes pokémon en 2008, j’ai donc
+            connue comme beaucoup d’entre vous la cour de récréation où les
+            cartes pokémon s'échangeaient et étaient même parfois interdites.
           </p>
           <p>
-            Des années plus tard, en retrouvant ma collection d'enfance dans de
-            mauvais état, j'ai décidé d'apprendre à les restaurer. Ce qui était
-            au départ un projet personnel est devenu une véritable vocation.
+            Et ce qu’on peut dire c’est qu’à cette époque beaucoup d’entre nous
+            ne prenait pas soin de leurs classeurs, les cartes ont souvent vu du
+            gravier, des mains pas très propres et des manipulations très peu
+            délicates.
           </p>
           <p>
-            Après plusieurs années de pratique et une formation professionnelle
-            en restauration, j'ai créé PokéRestore pour aider d'autres
-            collectionneurs à redonner vie à leurs cartes précieuses.
+            Une partie des miennes ont été volées, abîmées, et même perdues.
+            Après la sortie de la série du bloc ev3.5 en septembre 2023, j’ai
+            commencé à me replonger dans la collection. J’ai retrouvé une partie
+            de ma collection de quand j’étais petite chez mes parents et je n’ai
+            pas résisté longtemps à me refaire un classeur.
           </p>
           <p>
-            Aujourd'hui, avec plus de 500 cartes restaurées et des clients
-            satisfaits à travers toute la France, je continue de perfectionner
-            mes techniques pour offrir le meilleur service possible.
+            Puis j’ai acheté des cartes à l’unité que ça soit en japonais ou en
+            français, et un jour après avoir acheté une carte un ami me l’a
+            abîmée en essayant de la restaurer, c’était la carte de mes rêves.
+            J’étais extrêmement triste et démunie, je ne savais pas qui vers me
+            tourner où s’il existait vraiment une solution ?
+          </p>
+          <p>
+            Les prestations de restaurations de cartes sont souvent onéreuses
+            alors j’ai décidé de le faire moi même. C’était une occasion
+            d’ouvrir une porte alors encore jamais explorée. D’une carte abîmée
+            est née une envie, l’améliorer pour tenter de retrouver son état
+            initial, préserver l’émotion qu’elle renferme. Tout bon
+            collectionneur de carte Pokémon a une carte à laquelle il pense
+            quand on lui dit le mot “collection”, des émotions attachées à
+            celle-ci.
+          </p>
+          <p>
+            Aujourd’hui je restaure les cartes de ma collection, celles de mes
+            amis et c’est pour ça que j’ai créée Fix My Card, l’objectif étant
+            de prendre soin de vos cartes de collection, et ainsi préserver ces
+            émotions qui nous sont si chères, celles pour lesquelles nous
+            continuons à être passionnés.
           </p>
         </div>
       </div>
     </div>
 
-    {/* Values */}
-    <div class="mb-16">
-      <h2 class="text-3xl mb-8 text-center text-gray-900">Mes valeurs</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {
-          values.map((value) => (
-            <div class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border text-center hover:shadow-lg transition-shadow">
-              <div class="px-6 [&:last-child]:pb-6 pt-6">
-                <div class="flex justify-center mb-4">
-                  <value.icon class="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 class="text-xl mb-2">{value.title}</h3>
-                <p class="text-gray-600">{value.description}</p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    {/* Timeline */}
-    <div class="mb-16">
-      <h2 class="text-3xl mb-8 text-center text-gray-900">Mon parcours</h2>
-      <div class="max-w-3xl mx-auto">
-        <div class="space-y-8">
-          {
-            timeline.map((item, index) => (
-              <div class="flex gap-6">
-                <div class="flex flex-col items-center">
-                  <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0">
-                    {item.year}
-                  </div>
-                  {index < timeline.length - 1 && (
-                    <div class="w-0.5 h-full bg-blue-200 mt-2" />
-                  )}
-                </div>
-                <div class="pb-8">
-                  <h3 class="text-xl mb-2">{item.title}</h3>
-                  <p class="text-gray-600">{item.description}</p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-
-    {/* Certifications & Skills */}
     <div
-      class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-8 mb-16"
-    >
-      <h2 class="text-3xl mb-8 text-center text-gray-900">
-        Qualifications & Expertise
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div>
-          <h3 class="text-xl mb-4 text-gray-900">Formations</h3>
-          <ul class="space-y-2 text-gray-700">
-            <li>✓ Restauration de documents anciens (2018)</li>
-            <li>✓ Conservation d'objets de collection (2019)</li>
-            <li>✓ Techniques de grading PSA/BGS (2020)</li>
-            <li>✓ Chimie des matériaux (2021)</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-xl mb-4 text-gray-900">Compétences techniques</h3>
-          <ul class="space-y-2 text-gray-700">
-            <li>✓ Nettoyage et décontamination</li>
-            <li>✓ Défroissage et aplatissement</li>
-            <li>✓ Réparation structurelle</li>
-            <li>✓ Restauration chromatique</li>
-            <li>✓ Encapsulation professionnelle</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    {/* Stats */}
-    <div class="text-center mb-16">
-      <h2 class="text-3xl mb-8 text-gray-900">En chiffres</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div>
-          <div class="text-5xl text-blue-600 mb-2">500+</div>
-          <p class="text-xl text-gray-700">Cartes restaurées</p>
-        </div>
-        <div>
-          <div class="text-5xl text-blue-600 mb-2">98%</div>
-          <p class="text-xl text-gray-700">Taux de satisfaction</p>
-        </div>
-        <div>
-          <div class="text-5xl text-blue-600 mb-2">5+</div>
-          <p class="text-xl text-gray-700">Années d'expérience</p>
-        </div>
-        <div>
-          <div class="text-5xl text-blue-600 mb-2">200+</div>
-          <p class="text-xl text-gray-700">Clients satisfaits</p>
-        </div>
-      </div>
-    </div>
-
-    {/* Contact CTA */}
-    <div
-      class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border bg-blue-600 text-white text-center"
+      class="text-card-foreground flex flex-col gap-6 rounded-xl border
+      bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700
+      hover:to-blue-700 text-white text-center"
     >
       <div class="px-6 [&:last-child]:pb-6 pt-8 pb-8">
         <h2 class="text-3xl mb-4">Envie d'en savoir plus ?</h2>
@@ -221,8 +148,8 @@ const timeline = [
           N'hésitez pas à me contacter pour discuter de votre projet
         </p>
         <div class="space-y-2">
-          <p class="text-xl">📧 contact@pokerestore.fr</p>
-          <p class="text-xl">📞 +33 6 12 34 56 78</p>
+          <p class="text-xl">📧 fixmycard34@gmail.com</p>
+          <p class="text-xl">📞 +33 6 99 75 74 26</p>
         </div>
       </div>
     </div>

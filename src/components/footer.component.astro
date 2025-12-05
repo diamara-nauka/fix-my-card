@@ -8,6 +8,7 @@ import Fix from '../assets/illustrations/fix.png'
 import My from '../assets/illustrations/my.png'
 import Card from '../assets/illustrations/card.png'
 import Instagram from '../assets/illustrations/instagram.png'
+import Tiktok from '../assets/illustrations/tiktok.png'
 ---
 
 <footer class="bg-gray-900 text-white">
@@ -97,12 +98,33 @@ import Instagram from '../assets/illustrations/instagram.png'
       </div>
       <div>
         <h3 class="text-lg mb-4">Réseaux sociaux</h3>
-        <div class="space-y-1 text-gray-400">
-          <a href="https://www.instagram.com/fixmycard/" target="_blank">
+        <div class="text-gray-400 flex flex-row items-center">
+          <a
+            href="https://www.instagram.com/fixmycard/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image
               id="instagram"
               src={Instagram}
               alt="instagram"
+              fetchpriority="low"
+              quality={80}
+              width={48}
+              height={48}
+              format="webp"
+              class="mr-3"
+            />
+          </a>
+          <a
+            href="https://www.tiktok.com/@fixmycard"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              id="tiktok"
+              src={Tiktok}
+              alt="tiktok"
               fetchpriority="low"
               quality={80}
               width={48}

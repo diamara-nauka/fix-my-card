@@ -1,23 +1,45 @@
 ---
 import CheckCircle from '../../assets/icons/circle-check.svg'
 import Sparkles from '../../assets/icons/sparkles.svg'
-import RaichuCorrection from '../../assets/illustrations/raichu-correction.jpg'
-import RaichuFinition from '../../assets/illustrations/raichu-finition.jpg'
-import RaichuNettoyage from '../../assets/illustrations/raichu-nettoyage.jpg'
-import RaichuRetouche from '../../assets/illustrations/raichu-retouche.jpg'
-import OrderCheck from './order-check.tsx'
+import RaichuCorrection from '../../assets/illustrations/accueil/raichu-correction.jpg'
+import RaichuFinition from '../../assets/illustrations/accueil/raichu-finition.jpg'
+import RaichuNettoyage from '../../assets/illustrations/accueil/raichu-nettoyage.jpg'
+import RaichuRetouche from '../../assets/illustrations/accueil/raichu-retouche.jpg'
 import FixMyCard from '../../assets/illustrations/fix-my-card.png'
-import { Image } from 'astro:assets'
 import Fix from '../../assets/illustrations/fix.png'
 import My from '../../assets/illustrations/my.png'
 import Card from '../../assets/illustrations/card.png'
-import pokePattern from '../../assets/illustrations/poke-pattern-2x.png'
-import tcgDevicesBg from '../../assets/illustrations/tcg-devices-bg.jpg'
-import tcgDevicesBgPattern from '../../assets/illustrations/tcg-devices-bg-pattern.png'
-import ShinyPokeball from '../../assets/illustrations/shiny-pokeball.png'
-import Masterball from '../../assets/illustrations/masterball.png'
-import LoveBall from '../../assets/illustrations/loveball.png'
-import ImageModal from '../realisations/image-modal.tsx'
+import pokePatternSrc from '../../assets/illustrations/accueil/poke-pattern-2x.png'
+import tcgDevicesBg from '../../assets/illustrations/accueil/tcg-devices-bg.jpg'
+import tcgDevicesBgPatternSrc from '../../assets/illustrations/accueil/tcg-devices-bg-pattern.png'
+import ShinyPokeball from '../../assets/illustrations/accueil/shiny-pokeball.png'
+import Masterball from '../../assets/illustrations/accueil/masterball.png'
+import LoveBall from '../../assets/illustrations/accueil/loveball.png'
+import LpGood from '../../assets/illustrations/accueil/lp_good_icon.png'
+import NoteUp from '../../assets/illustrations/accueil/note_up.png'
+import ClasseurClean from '../../assets/illustrations/accueil/classeur_clean.png'
+import OrderCheck from './order-check.tsx'
+import { Image, getImage } from 'astro:assets'
+import ImageModal from './image-modal.tsx'
+
+const pokePattern = await getImage({
+  src: pokePatternSrc,
+  format: 'webp',
+  width: 300,
+  quality: 90,
+})
+const tcgDevicesBgPattern = await getImage({
+  src: tcgDevicesBgPatternSrc,
+  format: 'webp',
+  width: 391,
+  quality: 80,
+})
+const tcgDevicesBgOptimized = await getImage({
+  src: tcgDevicesBg,
+  format: 'webp',
+  width: 1000,
+  quality: 80,
+})
 
 const values = [
   {
@@ -57,7 +79,7 @@ const techniques = [
   {
     icon: RaichuCorrection,
     title: 'Correction des endommagements',
-    description: 'Correction des endommagements',
+    description: 'Correction des enfoncements et des pliures',
   },
   {
     icon: RaichuRetouche,
@@ -67,9 +89,7 @@ const techniques = [
   {
     icon: RaichuFinition,
     title: 'Finition',
-    description:
-      'Techniques de pressage professionnel pour améliorer le rendu final de' +
-      ' la carte',
+    description: 'Techniques de pressage professionnel',
   },
 ]
 ---
@@ -113,18 +133,14 @@ const techniques = [
         <h1
           class="text-6xl lg:text-8xl font-bold text-center lg:text-left mb-2"
         >
-          Redonnez vie
-        </h1>
-        <h1
-          class="text-6xl lg:text-8xl font-bold text-center lg:text-left mb-2"
-        >
+          Redonnez vie<br class="lg:inline" />
           à vos cartes
         </h1>
         <p class="text-xl text-center lg:text-left mb-2 p-5 lg:p-0">
           Restauration experte pour retrouver l’éclat, la précision et la valeur
           de vos jeux.
         </p>
-        <div class="w-[210px] h-[40px] flex justify-center">
+        <div class="w-[210px] h-[40px] flex justify-center lg:justify-start">
           <OrderCheck client:load />
         </div>
       </div>
@@ -211,10 +227,10 @@ const techniques = [
 
   <section class="relative py-24 bg-white overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="grid md:grid-cols-2 gap-20 items-center">
         <div>
           <h2
-            class="text-5xl mb-6 bg-gradient-to-r from-orange-600 to-red-600
+            class="text-5xl mb-6 bg-blue-600
             bg-clip-text text-transparent"
           >
             Notre Histoire
@@ -243,7 +259,7 @@ const techniques = [
         <div class="relative">
           <div
             class="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br
-            from-orange-200 to-red-200 rounded-2xl"
+             from-blue-400 via-purple-400 to-pink-400 rounded-2xl"
           >
           </div>
           <div class="relative bg-white p-8 rounded-2xl shadow-xl">
@@ -252,29 +268,44 @@ const techniques = [
             </h3>
             <ul class="space-y-3">
               <li class="flex items-start gap-3">
-                <CheckCircle
-                  class="w-5 h-5 text-green-600 mt-1 flex-shrink-0"
-                />
-                <span class="text-gray-700">
-                  Amélioration de l’état global de la carte (LP → GOOD) c’était
-                  l’état de la carte tu peux mettre le logo de cardmarket celui
-                  en rouge et celui en jaune pour illustrer
-                </span>
+                <div class="flex flex-row items-center text-gray-700">
+                  <p class="mr-1">Amélioration de l’état global de la carte</p>
+                  <Image
+                    src={LpGood}
+                    alt=""
+                    fetchpriority="low"
+                    width={64}
+                    quality={90}
+                    format="webp"
+                  />
+                </div>
               </li>
               <li class="flex items-start gap-3">
-                <CheckCircle
-                  class="w-5 h-5 text-green-600 mt-1 flex-shrink-0"
-                />
-                <span class="text-gray-700">
-                  Revalorisation de la carte (note de gradation 7 fleche up)
-                </span>
+                <div class="flex flex-row items-center text-gray-700">
+                  <p class="mr-1">Revalorisation de la carte</p>
+                  <Image
+                    src={NoteUp}
+                    alt=""
+                    fetchpriority="low"
+                    width={48}
+                    class="w-12 h-12"
+                    quality={90}
+                    format="webp"
+                  />
+                </div>
               </li>
               <li class="flex items-start gap-3">
-                <CheckCircle
-                  class="w-5 h-5 text-green-600 mt-1 flex-shrink-0"
-                />
-                <span class="text-gray-700">
-                  Entretien d’une collection (un classeur propre)
+                <span class="flex flex-row items-center text-gray-700">
+                  <p class="mr-1">Entretien d’une collection</p>
+                  <Image
+                    src={ClasseurClean}
+                    alt=""
+                    fetchpriority="low"
+                    width={48}
+                    class="w-12 h-12"
+                    quality={90}
+                    format="webp"
+                  />
                 </span>
               </li>
             </ul>
@@ -285,7 +316,7 @@ const techniques = [
   </section>
 
   <section
-    style={` background-image: url(${tcgDevicesBg.src});background-position: 50%;
+    style={`background-image: url(${tcgDevicesBgOptimized.src});background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;`}
     class="tcg-devices-section relative py-24 bg-gradient-to-br from-slate-900
@@ -427,8 +458,7 @@ const techniques = [
           </p>
           <p class="text-lg leading-relaxed">
             Avec patience et expertise, nous redonnons à vos cartes leur éclat,
-            tout en préservant leur authenticité. Car une carte restaurée, c'est
-            une nouvelle vie qui commence.
+            tout en préservant leur authenticité.
           </p>
         </div>
       </div>

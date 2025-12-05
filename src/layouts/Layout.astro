@@ -2,16 +2,46 @@
 import Header from '../components/header/header.component.astro'
 import Footer from '../components/footer.component.astro'
 import { ClientRouter } from 'astro:transitions'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = 'Fix My Card - Restauration de cartes Pokémon',
+  description = 'Restauration professionnelle de cartes Pokémon : nettoyage, retouche, correction des dégâts et finition experte pour redonner éclat, valeur et authenticité à vos cartes de collection. Découvrez nos prestations et nos réalisations.',
+} = Astro.props
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const ogImage = new URL('/favicon.png', Astro.site)
 ---
 
 <!doctype html>
-<html lang="en" class="w-full h-full overflow-hidden">
+<html lang="fr" class="w-full h-full overflow-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Fix My Card" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="theme-color" content="#9333ea" />
+    <meta name="author" content="Charlotte Vandenbroucke - Fix My Card" />
+    <meta name="robots" content="index, follow" />
     <meta name="generator" content={Astro.generator} />
-    <title>Fix my card</title>
+    <title>{title}</title>
     <ClientRouter />
   </head>
   <body class="m-0 w-full h-full overflow-hidden">
