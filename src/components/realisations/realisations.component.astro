@@ -14,11 +14,20 @@ import MinidracoBlue from '../../assets/illustrations/minidraco_blue.png'
 import DracoBlue from '../../assets/illustrations/draco_blue.png'
 import DracolosseBlue from '../../assets/illustrations/dracoloss_blue.png'
 
-const loadCarouselImages = async (folderName: string) => {
+const loadCarouselImages = async (
+  folderName: string,
+  illustrationImage: any
+) => {
+  const carouselImages = []
+
+  // Ajouter l'image d'illustration déjà optimisée en première position
+  // L'image est déjà importée statiquement donc déjà optimisée par Astro
+  carouselImages.push(illustrationImage.src)
+
+  // Charger les autres images du carrousel
   const images = import.meta.glob(
     '../../assets/illustrations/realisations/carrousel/**/*.{jpg,jpeg,png}'
   )
-  const carouselImages = []
 
   for (const path in images) {
     if (path.includes(`/carrousel/${folderName}/`)) {
@@ -116,7 +125,10 @@ const projects = [
 const projectsWithCarousel = await Promise.all(
   projects.map(async (project) => ({
     ...project,
-    carouselImages: await loadCarouselImages(project.carouselFolder),
+    carouselImages: await loadCarouselImages(
+      project.carouselFolder,
+      project.image
+    ),
   }))
 )
 
