@@ -1,75 +1,10 @@
 ---
-import Heart from '../../assets/icons/heart.svg'
-import Target from '../../assets/icons/target.svg'
-import Users from '../../assets/icons/users.svg'
-import Award from '../../assets/icons/award.svg'
 import Bureau from '../../assets/illustrations/about/bureau.jpg'
 import { Image } from 'astro:assets'
-
-const values = [
-  {
-    icon: Heart,
-    title: 'Passion',
-    description:
-      "Collectionneur depuis l'enfance, je comprends l'attachement émotionnel à chaque carte.",
-  },
-  {
-    icon: Target,
-    title: 'Précision',
-    description:
-      'Chaque restauration est réalisée avec une attention méticuleuse aux détails.',
-  },
-  {
-    icon: Award,
-    title: 'Excellence',
-    description:
-      'Formation continue et techniques de pointe pour des résultats optimaux.',
-  },
-  {
-    icon: Users,
-    title: 'Confiance',
-    description:
-      'Transparence totale et communication claire à chaque étape du processus.',
-  },
-]
-
-const timeline = [
-  {
-    year: '2015',
-    title: 'Les débuts',
-    description:
-      "Première restauration personnelle d'une carte d'enfance abîmée.",
-  },
-  {
-    year: '2018',
-    title: 'Formation professionnelle',
-    description:
-      'Formation spécialisée en restauration de documents et objets de collection.',
-  },
-  {
-    year: '2020',
-    title: 'Lancement de PokéRestore',
-    description:
-      'Ouverture officielle du service de restauration professionnel.',
-  },
-  {
-    year: '2023',
-    title: 'Expansion',
-    description:
-      'Plus de 500 cartes restaurées et une clientèle fidèle en France.',
-  },
-  {
-    year: '2025',
-    title: "Aujourd'hui",
-    description:
-      'Expert reconnu avec des techniques de restauration innovantes.',
-  },
-]
 ---
 
 <div class="py-12">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Header */}
     <div class="text-center mb-12">
       <h1 class="text-5xl mb-4 text-gray-900">À propos</h1>
       <p class="text-xl text-gray-600 max-w-3xl mx-auto">
