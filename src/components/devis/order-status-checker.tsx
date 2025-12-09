@@ -48,9 +48,7 @@ const OrderStatusChecker = (props: Props) => {
         </div>
       </Show>
 
-      <Show when={orderStatusStore.isOpen()}>
-        {props.children}
-      </Show>
+      <Show when={orderStatusStore.isOpen()}>{props.children}</Show>
     </>
   )
 }

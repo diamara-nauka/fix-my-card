@@ -9,6 +9,8 @@ import My from '../assets/illustrations/my.png'
 import Card from '../assets/illustrations/card.png'
 import Instagram from '../assets/illustrations/instagram.png'
 import Tiktok from '../assets/illustrations/tiktok.png'
+
+const getYear = () => new Date().getFullYear()
 ---
 
 <footer class="bg-gray-900 text-white">
@@ -16,11 +18,11 @@ import Tiktok from '../assets/illustrations/tiktok.png'
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
         <div class="flex items-center space-x-2 mb-4">
-          <a class="flex items-center">
+          <a class="flex items-center" href="/" aria-label="Retour à l'accueil">
             <Image
               id="fixMyCard"
               src={FixMyCard}
-              alt="FixMycard"
+              alt="Logo FixMycard"
               fetchpriority="low"
               quality={90}
               width={48}
@@ -32,7 +34,7 @@ import Tiktok from '../assets/illustrations/tiktok.png'
               id="fix"
               src={Fix}
               style="height:27px; width:47px;"
-              alt="Fix"
+              alt="Texte Fix"
               fetchpriority="low"
               quality={80}
               width={100}
@@ -44,7 +46,7 @@ import Tiktok from '../assets/illustrations/tiktok.png'
             <Image
               id="my"
               src={My}
-              alt="My"
+              alt="Texte My"
               style="height:31px; width:44px;"
               fetchpriority="low"
               quality={80}
@@ -57,7 +59,7 @@ import Tiktok from '../assets/illustrations/tiktok.png'
               id="card"
               fit="contain"
               src={Card}
-              alt="card"
+              alt="Texte Card"
               style="height:34px; width:64px;"
               fetchpriority="low"
               quality={80}
@@ -77,15 +79,23 @@ import Tiktok from '../assets/illustrations/tiktok.png'
         <h3 class="text-lg mb-4">Contact</h3>
         <div class="space-y-2 text-gray-400">
           <div class="flex items-center space-x-2">
-            <Mail height="18" width="18" />
-            <span>fixmycard34@gmail.com</span>
+            <Mail height="18" width="18" aria-hidden="true" />
+            <a
+              href="mailto:fixmycard34@gmail.com"
+              class="hover:text-white transition-colors"
+            >
+              fixmycard34@gmail.com
+            </a>
           </div>
           <div class="flex items-center space-x-2">
-            <Phone height="18" width="18" />
-            <span>+33 6 99 75 74 26</span>
+            <Phone height="18" width="18" aria-hidden="true" />
+            <a
+              href="tel:+33699757426"
+              class="hover:text-white transition-colors">+33 6 99 75 74 26</a
+            >
           </div>
           <div class="flex items-center space-x-2">
-            <MapPin height="18" width="18" />
+            <MapPin height="18" width="18" aria-hidden="true" />
             <span>St Jean de Vedas, France</span>
           </div>
         </div>
@@ -93,7 +103,7 @@ import Tiktok from '../assets/illustrations/tiktok.png'
       <div>
         <h3 class="text-lg mb-4">Horaires</h3>
         <div class="space-y-1 text-gray-400">
-          <p>7/7: 9h - 22h</p>
+          <p>7/J7 : 9h - 22h</p>
         </div>
       </div>
       <div>
@@ -103,41 +113,43 @@ import Tiktok from '../assets/illustrations/tiktok.png'
             href="https://www.instagram.com/fixmycard/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Suivez-nous sur Instagram"
           >
             <Image
               id="instagram"
               src={Instagram}
-              alt="instagram"
+              alt="Logo Instagram"
               fetchpriority="low"
               quality={80}
               width={48}
               height={48}
               format="webp"
-              class="mr-3"
+              class="mr-3 hover:opacity-80 transition-opacity"
             />
           </a>
           <a
             href="https://www.tiktok.com/@fixmycard"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Suivez-nous sur TikTok"
           >
             <Image
               id="tiktok"
               src={Tiktok}
-              alt="tiktok"
+              alt="Logo TikTok"
               fetchpriority="low"
               quality={80}
               width={48}
               height={48}
               format="webp"
-              class="mr-3"
+              class="mr-3 hover:opacity-80 transition-opacity"
             />
           </a>
         </div>
       </div>
 
       <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-        <p>&copy; 2025 Fix My Card. Tous droits réservés.</p>
+        <p>&copy; {getYear()} Fix My Card. Tous droits réservés.</p>
       </div>
     </div>
   </div>

@@ -21,16 +21,17 @@ const ImageCarousel: Component<CarouselProps> = (props) => {
 
   const currentImages = () => props.carouselData[projectIndex()] || []
 
-  const next = () =>
-    setImageIndex((i) => (i + 1) % currentImages().length)
+  const next = () => setImageIndex((i) => (i + 1) % currentImages().length)
 
   const prev = () =>
-    setImageIndex((i) => (i - 1 + currentImages().length) % currentImages().length)
+    setImageIndex(
+      (i) => (i - 1 + currentImages().length) % currentImages().length
+    )
 
   const close = () => setOpen(false)
 
-  /* 
-   * Preload images sequentially (one by one) to avoid flooding the network 
+  /*
+   * Preload images sequentially (one by one) to avoid flooding the network
    * and letting the browser cache handle the storage.
    */
   const preloadImagesSequentially = (urls: string[], index: number) => {
@@ -68,22 +69,25 @@ const ImageCarousel: Component<CarouselProps> = (props) => {
           />
 
           <button
-            class="w-[48px] absolute top-1/2 left-4 -translate-y-1/2 bg-white/80 px-3 py-3 rounded-full"
+            class="w-[48px] absolute top-1/2 left-4 -translate-y-1/2 bg-white/80 px-3 py-3 rounded-full hover:bg-white transition-colors"
             onClick={prev}
+            aria-label="Image précédente"
           >
             ‹
           </button>
 
           <button
-            class="w-[48px] absolute top-1/2 right-4 -translate-y-1/2 bg-white/80 px-3 py-3 rounded-full"
+            class="w-[48px] absolute top-1/2 right-4 -translate-y-1/2 bg-white/80 px-3 py-3 rounded-full hover:bg-white transition-colors"
             onClick={next}
+            aria-label="Image suivante"
           >
             ›
           </button>
 
           <button
-            class="absolute top-4 right-4 bg-white px-3 py-1 rounded"
+            class="absolute top-4 right-4 bg-white px-3 py-1 rounded hover:bg-gray-100 transition-colors"
             onClick={close}
+            aria-label="Fermer"
           >
             ✕
           </button>
