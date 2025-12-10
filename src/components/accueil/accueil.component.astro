@@ -176,7 +176,7 @@ const techniques = await Promise.all(
           de vos jeux.
         </p>
         <div class="w-[210px] h-[40px] flex justify-center lg:justify-start">
-          <OrderCheck client:load />
+          <OrderCheck client:visible />
         </div>
       </div>
     </div>
@@ -189,6 +189,7 @@ const techniques = await Promise.all(
       <div class="text-center">
         <div class="inline-block">
           <Image
+            loading="lazy"
             id="FixMyCard"
             src={FixMyCard}
             alt="FixMyCard"
@@ -202,6 +203,7 @@ const techniques = await Promise.all(
         </div>
         <div class="w-full flex justify-center align-middle">
           <Image
+            loading="lazy"
             id="fix"
             src={Fix}
             alt="Fix"
@@ -211,6 +213,7 @@ const techniques = await Promise.all(
             format="webp"
           />
           <Image
+            loading="lazy"
             id="my"
             src={My}
             alt="My"
@@ -222,6 +225,7 @@ const techniques = await Promise.all(
         </div>
         <div class="w-full flex justify-center align-middle">
           <Image
+            loading="lazy"
             id="card"
             src={Card}
             alt="card"
@@ -308,9 +312,9 @@ const techniques = await Promise.all(
                     <div class="flex flex-row items-center text-gray-700">
                       <div class="w-20 flex items-center justify-center">
                         <Image
+                          loading="lazy"
                           src={card.img}
                           alt=""
-                          fetchpriority="low"
                           width={card.width}
                           quality={80}
                           format="webp"
@@ -360,9 +364,9 @@ const techniques = await Promise.all(
                     bg-gradient-to-br ${value.color} mb-6`}
                   >
                     <Image
+                      loading="lazy"
                       src={value.icon}
                       alt={value.title}
-                      fetchpriority="low"
                       width={48}
                       class="w-12 h-12"
                       quality={90}
@@ -414,7 +418,7 @@ const techniques = await Promise.all(
                   <div class="flex justify-center mb-4">
                     <div>
                       <img
-                        fetchpriority="low"
+                        loading="lazy"
                         data-clickable-image
                         data-full-image-src={technique.image.src}
                         src={technique.icon.src}
@@ -535,5 +539,5 @@ const techniques = await Promise.all(
       </div>
     </div>
   </section>
-  <ImageModal client:load />
+  <ImageModal client:idle />
 </div>
