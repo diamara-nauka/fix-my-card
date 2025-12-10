@@ -139,8 +139,8 @@ const techniques = await Promise.all(
 <div class="overflow-hidden">
   <section
     style={`background-image: url(${pokePattern.src}); background-size: 300px;`}
-    class="min-h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-2 justify-center items-center
-    overflow-hidden"
+    class="min-h-[calc(100vh-64px)] grid grid-cols-1 lg:grid-cols-2
+    justify-center items-center overflow-hidden"
   >
     <div class="flex justify-center items-center md:mx-5">
       <div
@@ -333,7 +333,8 @@ const techniques = await Promise.all(
   </section>
 
   <section
-    style={`background-image: url(${tcgDevicesBgOptimized.src});background-position: 50%;
+    style={`background-image: url(${tcgDevicesBgOptimized.src});
+    background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;`}
     class="tcg-devices-section relative py-24 bg-gradient-to-br from-slate-900
@@ -359,7 +360,8 @@ const techniques = await Promise.all(
               >
                 <div data-slot="card-content" class="pt-8 text-center">
                   <div
-                    class={`inline-flex py-6 px-3 rounded-lg bg-gradient-to-br ${value.color} mb-6`}
+                    class={`inline-flex py-6 px-3 rounded-lg
+                    bg-gradient-to-br ${value.color} mb-6`}
                   >
                     <Image
                       src={value.icon}
@@ -387,7 +389,8 @@ const techniques = await Promise.all(
   </section>
 
   <section
-    class="relative py-24 bg-gradient-to-br from-purple-50 to-blue-50 overflow-hidden"
+    class="relative py-24 bg-gradient-to-br from-purple-50 to-blue-50
+    overflow-hidden"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16">
@@ -408,7 +411,8 @@ const techniques = await Promise.all(
             <div class="relative">
               <div
                 data-slot="card"
-                class="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                class="h-full hover:shadow-xl transition-all duration-300
+                hover:-translate-y-1"
               >
                 <div data-slot="card-content" class="pt-6">
                   <div class="flex justify-center mb-4">
@@ -419,12 +423,16 @@ const techniques = await Promise.all(
                         data-full-image-src={technique.image.src}
                         src={technique.icon.src}
                         alt={technique.description}
-                        class="cursor-pointer  rounded-lg  lg:w-[210px] lg:h-[280px] md:w-[315px] md:h-[420px]"
+                        class="cursor-pointer  rounded-lg  lg:w-[210px]
+                        lg:h-[280px] md:w-[315px] md:h-[420px]"
                       />
                     </div>
                   </div>
                   <h3 class="text-xl mb-3 text-center">{technique.title}</h3>
-                  <p class="text-gray-600 m-2 text-center text-sm leading-relaxed">
+                  <p
+                    class="text-gray-600 m-2 text-center text-sm
+                    leading-relaxed"
+                  >
                     {technique.description}
                   </p>
                 </div>

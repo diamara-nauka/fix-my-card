@@ -26,20 +26,16 @@ const ImageModal: Component = () => {
       }
     }
 
-    // Ajouter les event listeners sur les cards
     const cards = document.querySelectorAll<HTMLElement>(
       '[data-slot="card-content"]'
     )
     cards.forEach((card) => {
-      // Ajouter un style cursor-pointer pour indiquer que c'est cliquable
       card.style.cursor = 'pointer'
       card.addEventListener('click', handleCardClick)
     })
 
-    // Écouter la touche Échap
     document.addEventListener('keydown', handleEscape)
 
-    // Cleanup
     onCleanup(() => {
       cards.forEach((card) =>
         card.removeEventListener('click', handleCardClick)
@@ -53,7 +49,8 @@ const ImageModal: Component = () => {
   return (
     <Show when={open()}>
       <div
-        class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 cursor-pointer"
+        class="fixed inset-0 bg-black bg-opacity-60 flex items-center
+        justify-center z-50 cursor-pointer"
         onClick={close}
         role="dialog"
         aria-modal="true"
@@ -62,7 +59,8 @@ const ImageModal: Component = () => {
         <img
           src={src()}
           alt="Aperçu image"
-          class="max-w-[90vw] max-h-[90vh] w-auto h-auto rounded-lg shadow-lg cursor-default"
+          class="max-w-[90vw] max-h-[90vh] w-auto h-auto rounded-lg shadow-lg
+          cursor-default"
         />
       </div>
     </Show>
