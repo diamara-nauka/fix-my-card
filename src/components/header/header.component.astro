@@ -18,54 +18,50 @@ const navItems = [
 <nav class="bg-white shadow-md sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <a href="/" class="flex items-center">
+      <a href="/" class="flex items-center gap-1">
         <Image
-          id="fixMyCard"
           src={FixMyCard}
-          alt="FixMycard"
+          alt="Fix My Card"
+          loading="eager"
           fetchpriority="high"
-          quality={90}
+          quality={100}
           width={48}
           height={48}
           format="webp"
-          class="mr-3"
+          class="w-12 h-12"
         />
         <Image
-          id="fix"
           src={Fix}
-          style="height:27px; width:47px;"
           alt="Fix"
+          loading="eager"
           fetchpriority="high"
-          quality={80}
-          width={100}
-          fit="contain"
-          position="center"
+          quality={100}
+          width={47}
+          height={27}
           format="webp"
-          class="mr-1"
+          class="h-[27px] w-[47px]"
         />
         <Image
-          id="my"
           src={My}
           alt="My"
-          style="height:31px; width:44px;"
+          loading="eager"
           fetchpriority="high"
-          quality={80}
-          width={100}
+          quality={100}
+          width={44}
+          height={31}
           format="webp"
-          position="center"
-          fit="contain"
+          class="h-[31px] w-[44px]"
         />
         <Image
-          id="card"
-          fit="contain"
           src={Card}
-          alt="card"
-          style="height:34px; width:64px;"
+          alt="Card"
+          loading="eager"
           fetchpriority="high"
-          quality={80}
-          width={100}
-          position="center"
+          quality={100}
+          width={64}
+          height={34}
           format="webp"
+          class="h-[34px] w-[64px]"
         />
       </a>
 
@@ -74,7 +70,7 @@ const navItems = [
           navItems.map((item) => (
             <a
               href={item.href}
-              class="transition-colors text-gray-700 hover:text-blue-600"
+              class="text-gray-700 hover:text-blue-600 transition-colors font-medium"
             >
               {item.label}
             </a>
@@ -82,7 +78,7 @@ const navItems = [
         }
       </div>
 
-      <MobileMenu client:load navItems={navItems} />
+      <MobileMenu client:visible navItems={navItems} />
     </div>
   </div>
 </nav>
