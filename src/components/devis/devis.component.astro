@@ -6,7 +6,7 @@ import OrderStatusChecker from './order-status-checker.tsx'
 
 <div class="container mx-auto px-4 xl:px-80 py-8 pt-28 min-h-full">
   <h1 class="text-3xl font-bold mb-6">Contactez-moi</h1>
-  <OrderStatusChecker client:load>
+  <OrderStatusChecker client:idle>
     <p class="mb-6">
       Je vous ferais parvenir un devis dans les plus brefs délais
     </p>
@@ -59,7 +59,7 @@ import OrderStatusChecker from './order-status-checker.tsx'
         <input
           type="text"
           inputmode="numeric"
-          pattern="^\d{5}$"
+          pattern="[0-9]{5}"
           id="codePostal"
           name="codePostal"
           required
@@ -91,7 +91,7 @@ import OrderStatusChecker from './order-status-checker.tsx'
 
       <ImageContainer client:visible />
 
-      <FormSubmitHandler client:load />
+      <FormSubmitHandler client:idle />
     </form>
   </OrderStatusChecker>
 </div>
