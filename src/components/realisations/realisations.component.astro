@@ -20,10 +20,8 @@ const loadCarouselImages = async (
 ) => {
   const carouselImages = []
 
-  // Ajouter l'image d'illustration déjà optimisée en première position
   carouselImages.push(optimizedIllustrationSrc)
 
-  // Charger les autres images du carrousel
   const images = import.meta.glob(
     '../../assets/illustrations/realisations/carrousel/**/*.{jpg,jpeg,png}'
   )
@@ -120,10 +118,8 @@ const projects = [
   },
 ]
 
-// Pré-optimiser les images d'illustration et charger les images de carrousel
 const projectsWithCarousel = await Promise.all(
   projects.map(async (project) => {
-    // Optimiser l'image d'illustration une seule fois
     const optimizedIllustration = await getImage({
       src: project.image,
       format: 'webp',
@@ -149,42 +145,53 @@ const projectsWithCarousel = await Promise.all(
   })
 )
 
-// Créer un tableau des images de carrousel pour chaque projet
 const carouselData = projectsWithCarousel.map((p) => p.carouselImages)
 ---
 
 <div class="py-12">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <h1 class="text-5xl mb-4 text-gray-900">Mes réalisations</h1>
+      <h1 class="text-5xl font-bold mb-4 text-gray-900">Mes réalisations</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Découvrez nos restaurations de cartes Pokémon avant et après
+      </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
       {
-        projectsWithCarousel.map((project) => (
+        projectsWithCarousel.map((project, index) => (
           <div
-            data-slot="card"
             data-clickable-image
-            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
+            class="bg-card text-card-foreground flex flex-col rounded-xl border overflow-hidden hover:shadow-xl transition-shadow cursor-pointer group"
           >
-            <div class="relative h-64 overflow-hidden">
+            <div class="relative h-64 overflow-hidden bg-gray-100">
               <img
                 src={project.optimizedImage}
                 alt={project.title}
-                class="w-full h-full object-cover"
+                loading={index < 3 ? 'eager' : 'lazy'}
+                fetchpriority={index < 3 ? 'high' : undefined}
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div class="absolute top-4 right-4">
-                <span class="inline-flex items-center justify-center rounded-full px-2 py-0.5 w-[54px] h-[54px] bg-white">
-                  <Image src={project.service} width={54} alt="icone" />
+                <span class="inline-flex items-center justify-center rounded-full w-14 h-14 bg-white shadow-lg">
+                  <Image
+                    src={project.service}
+                    width={40}
+                    height={40}
+                    alt="Icône formule"
+                    loading="lazy"
+                  />
                 </span>
               </div>
             </div>
-            <div data-slot="card-content" class="px-6 [&:last-child]:pb-6 pt-4">
-              <h3 class="text-xl mb-2">{project.title}</h3>
-              <p class="text-gray-600 mb-4">{project.description}</p>
-              <div class="space-y-2 text-sm">
-                <div class="flex items-start">
-                  <span class="text-red-600 mr-2">Avant:</span>
+            <div class="px-6 py-6 flex-1 flex flex-col">
+              <h3 class="text-xl font-semibold mb-2 text-gray-900">
+                {project.title}
+              </h3>
+              <p class="text-sm text-gray-600 mb-4">{project.description}</p>
+              <div class="mt-auto space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-red-600 font-medium shrink-0">Avant:</span>
                   <span class="text-gray-700">{project.before}</span>
                 </div>
               </div>
@@ -194,5 +201,5 @@ const carouselData = projectsWithCarousel.map((p) => p.carouselImages)
       }
     </div>
   </div>
-  <ImageCarrousel carouselData={carouselData} client:load />
+  <ImageCarrousel carouselData={carouselData} client:idle />
 </div>
