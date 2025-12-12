@@ -310,7 +310,7 @@ const techniques = await Promise.all(
                 cards.map((card) => (
                   <li class="flex items-center gap-3 h-[48px]">
                     <div class="flex flex-row items-center text-gray-700">
-                      <div class="w-20 flex items-center justify-center">
+                      <div class="min-w-20 flex items-center justify-center">
                         <Image
                           loading="lazy"
                           src={card.img}
@@ -320,7 +320,7 @@ const techniques = await Promise.all(
                           format="webp"
                         />
                       </div>
-                      <p class="mr-1">{card.title}</p>
+                      <p>{card.title}</p>
                     </div>
                   </li>
                 ))
