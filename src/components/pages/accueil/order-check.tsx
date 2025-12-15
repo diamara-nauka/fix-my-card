@@ -1,5 +1,5 @@
 import { onMount, Show } from 'solid-js'
-import { orderStatusStore } from '../../stores/order-status.store.ts'
+import { orderStatusStore } from '../../../stores/order-status.store.ts'
 
 export default function OrderCheck() {
   onMount(() => {

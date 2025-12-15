@@ -1,5 +1,5 @@
 import { type JSX, onMount, Show } from 'solid-js'
-import { orderStatusStore } from '../../stores/order-status.store.ts'
+import { orderStatusStore } from '../../../stores/order-status.store.ts'
 
 type Props = {
   children: JSX.Element

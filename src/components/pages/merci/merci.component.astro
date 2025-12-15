@@ -1,15 +1,15 @@
 ---
 import { Image, getImage } from 'astro:assets'
-import FixMyCard from '../assets/illustrations/fix-my-card.png'
-import Fix from '../assets/illustrations/fix.png'
-import My from '../assets/illustrations/my.png'
-import Card from '../assets/illustrations/card.png'
-import CircleCheck from '../assets/icons/circle-check.svg'
-import Sparkles from '../assets/icons/sparkles.svg'
-import ShinyPokeball from '../assets/illustrations/accueil/shiny-pokeball.png'
-import Masterball from '../assets/illustrations/accueil/masterball.png'
-import LoveBall from '../assets/illustrations/accueil/loveball.png'
-import pokePatternSrc from '../assets/illustrations/accueil/poke-pattern-2x.png'
+import FixMyCard from '../../../assets/illustrations/fix-my-card.png'
+import Fix from '../../../assets/illustrations/fix.png'
+import My from '../../../assets/illustrations/my.png'
+import Card from '../../../assets/illustrations/card.png'
+import CircleCheck from '../../../assets/icons/circle-check.svg'
+import Sparkles from '../../../assets/icons/sparkles.svg'
+import ShinyPokeball from '../../../assets/illustrations/accueil/shiny-pokeball.png'
+import Masterball from '../../../assets/illustrations/accueil/masterball.png'
+import LoveBall from '../../../assets/illustrations/accueil/loveball.png'
+import pokePatternSrc from '../../../assets/illustrations/accueil/poke-pattern-2x.png'
 
 const pokePattern = await getImage({
   src: pokePatternSrc,
@@ -216,7 +216,7 @@ const nextSteps = [
           Nos prestations
         </a>
         <a
-          href="/mes-realisations"
+          href="/realisations"
           class="w-60 border-2 border-white text-white hover:bg-white/10 shadow-xl inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all outline-none focus-visible:ring-2 h-10 rounded-md px-6 cursor-pointer active:scale-95"
         >
           Nos réalisations
