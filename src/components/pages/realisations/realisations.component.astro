@@ -23,7 +23,7 @@ const loadCarouselImages = async (
   carouselImages.push(optimizedIllustrationSrc)
 
   const images = import.meta.glob(
-    '../../assets/illustrations/realisations/carrousel/**/*.{jpg,jpeg,png}'
+    '../../../assets/illustrations/realisations/carrousel/**/*.{jpg,jpeg,png}'
   )
 
   for (const path in images) {
