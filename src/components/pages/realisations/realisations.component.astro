@@ -1,18 +1,18 @@
 ---
 import { Image, getImage } from 'astro:assets'
 import ImageCarrousel from './image-carrousel.tsx'
-import Flagadoss from '../../../assets/illustrations/realisations/flagadoss.jpg'
-import Rayquaza from '../../../assets/illustrations/realisations/rayquaza.jpg'
-import Drac from '../../../assets/illustrations/realisations/dracaufeu.jpg'
-import Alakazam from '../../../assets/illustrations/realisations/alakazam.jpg'
-import Dracolosse from '../../../assets/illustrations/realisations/dracolosse.jpg'
-import Draco from '../../../assets/illustrations/realisations/draco.png'
-import Lugia from '../../../assets/illustrations/realisations/lugia.png'
-import Latios from '../../../assets/illustrations/realisations/latios.png'
-import Rayquaza2 from '../../../assets/illustrations/realisations/rayquaza_2.png'
-import MinidracoBlue from '../../../assets/illustrations/minidraco_blue.png'
-import DracoBlue from '../../../assets/illustrations/draco_blue.png'
-import DracolosseBlue from '../../../assets/illustrations/dracoloss_blue.png'
+import Flagadoss from '../../../assets/realisations/flagadoss.jpg'
+import Rayquaza from '../../../assets/realisations/rayquaza.jpg'
+import Drac from '../../../assets/realisations/dracaufeu.jpg'
+import Alakazam from '../../../assets/realisations/alakazam.jpg'
+import Dracolosse from '../../../assets/realisations/dracolosse.jpg'
+import Draco from '../../../assets/realisations/draco.png'
+import Lugia from '../../../assets/realisations/lugia.png'
+import Latios from '../../../assets/realisations/latios.png'
+import Rayquaza2 from '../../../assets/realisations/rayquaza_2.png'
+import MinidracoBlue from '../../../assets/minidraco_blue.png'
+import DracoBlue from '../../../assets/draco_blue.png'
+import DracolosseBlue from '../../../assets/dracoloss_blue.png'
 
 const loadCarouselImages = async (
   folderName: string,
@@ -23,7 +23,7 @@ const loadCarouselImages = async (
   carouselImages.push(optimizedIllustrationSrc)
 
   const images = import.meta.glob(
-    '../../../assets/illustrations/realisations/carrousel/**/*.{jpg,jpeg,png}'
+    '../../../assets/realisations/carrousel/**/*.{jpg,jpeg,png}'
   )
 
   for (const path in images) {
