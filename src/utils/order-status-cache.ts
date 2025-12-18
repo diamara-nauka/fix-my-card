@@ -37,11 +37,3 @@ export const setCachedOrderStatus = (data: OrderStatusResponse): void => {
     console.error('Error caching order status:', error)
   }
 }
-
-export const clearOrderStatusCache = (): void => {
-  try {
-    localStorage.removeItem(CACHE_KEY)
-  } catch (error) {
-    console.error('Error clearing cache:', error)
-  }
-}
