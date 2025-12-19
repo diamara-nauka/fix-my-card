@@ -213,18 +213,28 @@ const techniques = await Promise.all(
     rootMargin: '0px 0px -50px 0px',
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed')
-      }
-    })
-  }, observerOptions)
+  function initScrollReveal() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed')
+        }
+      })
+    }, observerOptions)
 
-  document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.scroll-reveal')
-    revealElements.forEach((el) => observer.observe(el))
-  })
+    revealElements.forEach((el) => {
+      // Reset the revealed state for elements that might have been revealed before
+      el.classList.remove('revealed')
+      observer.observe(el)
+    })
+  }
+
+  // Initialize on first load
+  document.addEventListener('DOMContentLoaded', initScrollReveal)
+
+  // Reinitialize after Astro page transitions
+  document.addEventListener('astro:page-load', initScrollReveal)
 </script>
 
 <div class="overflow-hidden">
