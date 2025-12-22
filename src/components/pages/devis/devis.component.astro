@@ -27,7 +27,8 @@ import OrderStatusChecker from './order-status-checker.tsx'
           id="name"
           name="name"
           required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md
+          focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
@@ -38,7 +39,8 @@ import OrderStatusChecker from './order-status-checker.tsx'
           id="email"
           name="email"
           required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md
+          focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
@@ -49,7 +51,8 @@ import OrderStatusChecker from './order-status-checker.tsx'
           id="adresse"
           name="adresse"
           required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md
+          focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
       <div>
@@ -63,7 +66,8 @@ import OrderStatusChecker from './order-status-checker.tsx'
           id="codePostal"
           name="codePostal"
           required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md
+          focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
@@ -74,7 +78,8 @@ import OrderStatusChecker from './order-status-checker.tsx'
           id="ville"
           name="ville"
           required
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md
+          focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
 
@@ -85,15 +90,40 @@ import OrderStatusChecker from './order-status-checker.tsx'
           name="message"
           required
           rows="6"
-          class="w-full px-3 py-2 border border-gray-300 rounded-md resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md resize-y
+          focus:outline-none focus:ring-2 focus:ring-blue-500"
         ></textarea>
       </div>
 
       <ImageContainer client:visible />
+      <div
+        class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg border
+        border-gray-200 hover:border-blue-300 transition-colors"
+      >
+        <input
+          type="checkbox"
+          id="validite"
+          name="validite"
+          required
+          class="w-5 h-5 text-blue-600 focus:outline-none bg-white
+          border-gray-300 rounded focus:ring-2 focus:ring-blue-500
+          focus:ring-offset-2 cursor-pointer transition-all
+          hover:border-blue-400"
+        />
+        <label
+          for="validite"
+          class="flex items-center h-5 text-sm text-gray-700 cursor-pointer
+          select-none"
+        >
+          J'atteste de la validité des informations soumises <span
+            class="text-red-500">*</span
+          >
+        </label>
+      </div>
 
       <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
         <p class="text-sm text-gray-700">
-          Vous pouvez prendre, dès à présent, connaissance de nos
+          Vous pouvez dès à présent prendre connaissance de nos
           <a
             href="/cgv-fixmycard.pdf"
             class="text-blue-600 hover:text-blue-800 underline font-medium"
