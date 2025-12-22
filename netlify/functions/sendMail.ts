@@ -26,7 +26,6 @@ export const handler: Handler = async (event: HandlerEvent) => {
     codePostal?: string
     ville?: string
     message?: string
-    cgv?: string
     [key: string]: string | undefined
   } = {}
   const files: Array<{
@@ -89,7 +88,6 @@ Email : ${fields.email || 'N/A'}
 Adresse : ${fields.adresse || 'N/A'}
 Code Postal : ${fields.codePostal || 'N/A'}
 Ville : ${fields.ville || 'N/A'}
-Cgv : ${fields.cgv || 'N/A'}
 Message :
 ${fields.message || 'N/A'}
           `,
