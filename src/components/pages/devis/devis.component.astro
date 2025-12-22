@@ -91,6 +91,31 @@ import OrderStatusChecker from './order-status-checker.tsx'
 
       <ImageContainer client:visible />
 
+      <div
+        class="flex items-start gap-3 p-4 bg-gray-50 rounded-lg border
+        border-gray-200 hover:border-blue-300 transition-colors"
+      >
+        <input
+          type="checkbox"
+          id="cgv"
+          name="cgv"
+          class="mt-0.5 w-5 h-5 text-blue-600 bg-white border-gray-300
+          rounded focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+          cursor-pointer transition-all hover:border-blue-400"
+        />
+        <label
+          for="cgv"
+          class="text-sm text-gray-700 cursor-pointer select-none"
+        >
+          J'accepte les <a
+            href="/cgv-fixmycard.pdf"
+            class="text-blue-600 hover:text-blue-800 underline font-medium"
+            target="_blank">conditions générales de vente</a
+          >
+          <span class="text-red-500">*</span>
+        </label>
+      </div>
+
       <FormSubmitHandler client:idle />
     </form>
   </OrderStatusChecker>
