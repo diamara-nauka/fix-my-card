@@ -15,7 +15,7 @@ const getYear = () => new Date().getFullYear()
 
 <footer class="bg-gray-900 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
       <div>
         <div class="flex items-center space-x-2 mb-4">
           <a class="flex items-center" href="/" aria-label="Retour à l'accueil">
@@ -68,8 +68,7 @@ const getYear = () => new Date().getFullYear()
               format="webp"
             />
           </a>
-        </div>
-        <p class="text-gray-400">
+        </div><p class="text-gray-400">
           Expert en restauration de cartes Pokémon. Redonnez vie à vos cartes
           les plus précieuses.
         </p>
@@ -147,7 +146,17 @@ const getYear = () => new Date().getFullYear()
           </a>
         </div>
       </div>
-
+      <div>
+        <h3 class="text-lg mb-4">Entreprise</h3>
+        <div class="space-y-1 text-gray-400">
+          <a
+            class="cursor-pointer underline"
+            href="/cgv-fixmycard.pdf"
+            target="_blank"
+            >Condition générale de vente<br />Politique de confidentialité</a
+          >
+        </div>
+      </div>
       <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
         <p>&copy; {getYear()} Fix My Card. Tous droits réservés.</p>
       </div>
