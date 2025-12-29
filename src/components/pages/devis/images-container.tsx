@@ -8,7 +8,7 @@ interface FileItem {
 
 export default function Formulaire() {
   const [files, setFiles] = createSignal<FileItem[]>([])
-  const max = 5
+  const max = 7
   let hiddenInput: HTMLInputElement | undefined
 
   // Mettre à jour la validité du champ quand les fichiers changent
