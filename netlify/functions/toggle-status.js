@@ -1,4 +1,3 @@
-// netlify/functions/toggle-status.js
 import { getStore } from '@netlify/blobs'
 
 export default async (req) => {

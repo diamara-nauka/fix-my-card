@@ -1,4 +1,3 @@
-// netlify/functions/admin-auth.js
 export default async (req) => {
   const { password } = await req.json()
 

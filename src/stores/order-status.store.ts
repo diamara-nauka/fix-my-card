@@ -17,7 +17,7 @@ const loadOrderStatus = async (): Promise<void> => {
 
   const cached = getCachedOrderStatus()
   if (cached) {
-    setOrderStatus(cached.ordersOpen ? 'open' : 'closed')
+    setOrderStatus(cached.isOpen ? 'open' : 'closed')
     setIsInitialized(true)
     return
   }
@@ -25,7 +25,7 @@ const loadOrderStatus = async (): Promise<void> => {
   try {
     const data = await fetchOrderStatus()
     setCachedOrderStatus(data)
-    setOrderStatus(data.ordersOpen ? 'open' : 'closed')
+    setOrderStatus(data.isOpen ? 'open' : 'closed')
     setIsInitialized(true)
   } catch (error) {
     console.error('Error loading order status:', error)

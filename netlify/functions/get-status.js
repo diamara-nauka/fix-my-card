@@ -5,6 +5,9 @@ export default async () => {
   const isOpen = (await store.get('isOpen')) === 'true'
 
   return new Response(JSON.stringify({ isOpen }), {
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, max-age=60',
+    },
   })
 }
