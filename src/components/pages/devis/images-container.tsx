@@ -38,6 +38,18 @@ export default function Formulaire() {
       }
     }
 
+    /* disable image compression
+    input.onchange = () => {
+      if (!input.files || input.files.length === 0) return // annulation = rien
+
+      const file = input.files[0]
+      const url = URL.createObjectURL(file)
+
+      // on ajoute seulement APRES sélection
+      setFiles([...files(), { file, url }])
+    }
+     */
+
     input.click()
   }
 

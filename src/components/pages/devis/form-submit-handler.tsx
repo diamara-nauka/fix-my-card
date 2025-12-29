@@ -119,7 +119,7 @@ export default function FormSubmitHandler() {
                   Causes possibles :
                 </h4>
                 <ul class="list-disc list-inside text-gray-600 space-y-1 ml-2">
-                  <li>Les images sont encore trop volumineuses</li>
+                  <li>Les images sont trop volumineuses</li>
                   <li>Problème de connexion internet</li>
                 </ul>
               </div>
