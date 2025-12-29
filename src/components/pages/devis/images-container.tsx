@@ -1,4 +1,5 @@
 import { createSignal, For } from 'solid-js'
+import { resizeImage } from '../../../utils/image-resizer'
 
 interface FileItem {
   file: File
@@ -17,14 +18,24 @@ export default function Formulaire() {
     input.type = 'file'
     input.accept = 'image/*'
 
-    input.onchange = () => {
+    input.onchange = async () => {
       if (!input.files || input.files.length === 0) return // annulation = rien
 
-      const file = input.files[0]
-      const url = URL.createObjectURL(file)
+      const originalFile = input.files[0]
 
-      // on ajoute seulement APRES sélection
-      setFiles([...files(), { file, url }])
+      try {
+        const resizedFile = await resizeImage(originalFile)
+        const url = URL.createObjectURL(resizedFile)
+
+        // on ajoute seulement APRES sélection et redimensionnement
+        setFiles([...files(), { file: resizedFile, url }])
+      } catch (error) {
+        console.error("Erreur lors du redimensionnement de l'image", error)
+        // Fallback or alert user? For now, silence or alert could be good.
+        // Given the quick fix nature, maybe just alert if critical, but let's stick to console for now
+        // or just add original if resize fails? No, better to fail resize than send huge file.
+        alert('Impossible de traiter cette image. Veuillez réessayer.')
+      }
     }
 
     input.click()
