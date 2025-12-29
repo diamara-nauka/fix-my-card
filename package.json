@@ -11,6 +11,7 @@
     "prod": "npm run build && netlify dev --dir=dist --context production"
   },
   "dependencies": {
+    "@netlify/blobs": "^10.5.0",
     "busboy": "^1.6.0",
     "mime-types": "^3.0.2",
     "nodemailer": "^7.0.11"

@@ -1,0 +1,365 @@
+---
+// src/pages/admin.astro
+// Page d'administration pour gérer l'état d'ouverture des commandes
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Toggle Commandes</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 40px;
+        max-width: 500px;
+        width: 100%;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 28px;
+      }
+
+      .subtitle {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 14px;
+      }
+
+      .status-card {
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 30px;
+        border-left: 4px solid #667eea;
+      }
+
+      .status-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #666;
+        margin-bottom: 8px;
+      }
+
+      .status-value {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .status-value.open {
+        color: #10b981;
+      }
+
+      .status-value.closed {
+        color: #ef4444;
+      }
+
+      .auth-section,
+      .control-section {
+        margin-bottom: 20px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      input[type='password'] {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 16px;
+        margin-bottom: 12px;
+        transition: border-color 0.3s;
+      }
+
+      input[type='password']:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn-primary {
+        background: #667eea;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #5568d3;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-success {
+        background: #10b981;
+        color: white;
+        margin-bottom: 12px;
+      }
+
+      .btn-success:hover {
+        background: #059669;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+      }
+
+      .btn-danger {
+        background: #ef4444;
+        color: white;
+      }
+
+      .btn-danger:hover {
+        background: #dc2626;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+      }
+
+      .message {
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+
+      .message.error {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fecaca;
+      }
+
+      .message.success {
+        background: #d1fae5;
+        color: #065f46;
+        border: 1px solid #a7f3d0;
+      }
+
+      .loading {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        margin-left: 8px;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔐 Administration</h1>
+      <p class="subtitle">Gestion de l'état des commandes</p>
+
+      <div id="message"></div>
+
+      <div class="status-card">
+        <div class="status-label">État actuel</div>
+        <div id="statusValue" class="status-value">Chargement...</div>
+      </div>
+
+      <div id="authSection" class="auth-section">
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Mot de passe admin"
+          autocomplete="current-password"
+        />
+        <button class="btn-primary" onclick="authenticate()">
+          Se connecter
+        </button>
+      </div>
+
+      <div id="controlSection" class="control-section hidden">
+        <button class="btn-success" onclick="toggleStatus(true)">
+          ✅ Ouvrir les commandes
+        </button>
+        <button class="btn-danger" onclick="toggleStatus(false)">
+          ❌ Fermer les commandes
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const isDev = import.meta.env.DEV
+      const basePath = isDev ? 'http://localhost:8888/' : '/'
+
+      let isAuthenticated = false
+
+      // Charger l'état au démarrage
+      async function loadStatus() {
+        try {
+          const response = await fetch(
+            basePath + '.netlify/functions/get-status'
+          )
+          const data = await response.json()
+          updateStatusDisplay(data.isOpen)
+        } catch (error) {
+          showMessage('Erreur lors du chargement', 'error')
+        }
+      }
+
+      function updateStatusDisplay(isOpen) {
+        const statusValue = document.getElementById('statusValue')
+        statusValue.textContent = isOpen ? '🟢 Ouvert' : '🔴 Fermé'
+        statusValue.className = `status-value ${isOpen ? 'open' : 'closed'}`
+      }
+
+      async function authenticate() {
+        const password = document.getElementById('passwordInput').value
+
+        if (!password) {
+          showMessage('Veuillez entrer un mot de passe', 'error')
+          return
+        }
+
+        const button = event.target
+        button.disabled = true
+        button.innerHTML = 'Connexion<span class="loading"></span>'
+
+        try {
+          const response = await fetch(
+            basePath + '.netlify/functions/admin-auth',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ password }),
+            }
+          )
+
+          const data = await response.json()
+
+          if (response.ok) {
+            isAuthenticated = true
+            document.getElementById('authSection').classList.add('hidden')
+            document.getElementById('controlSection').classList.remove('hidden')
+            showMessage('Connecté avec succès', 'success')
+          } else {
+            showMessage(data.error || 'Mot de passe incorrect', 'error')
+          }
+        } catch (error) {
+          showMessage('Erreur de connexion', 'error')
+        } finally {
+          button.disabled = false
+          button.textContent = 'Se connecter'
+        }
+      }
+
+      async function toggleStatus(isOpen) {
+        if (!isAuthenticated) {
+          showMessage('Non authentifié', 'error')
+          return
+        }
+
+        const password = document.getElementById('passwordInput').value
+        const buttons = document.querySelectorAll('#controlSection button')
+
+        buttons.forEach((btn) => {
+          btn.disabled = true
+          btn.innerHTML += '<span class="loading"></span>'
+        })
+
+        try {
+          const response = await fetch(
+            basePath + '.netlify/functions/toggle-status',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ password, isOpen }),
+            }
+          )
+
+          const data = await response.json()
+
+          if (response.ok) {
+            updateStatusDisplay(isOpen)
+            showMessage(
+              `Commandes ${isOpen ? 'ouvertes' : 'fermées'} avec succès`,
+              'success'
+            )
+          } else {
+            showMessage(data.error || 'Erreur lors de la modification', 'error')
+          }
+        } catch (error) {
+          showMessage('Erreur lors de la modification', 'error')
+        } finally {
+          buttons.forEach((btn) => {
+            btn.disabled = false
+            const loading = btn.querySelector('.loading')
+            if (loading) loading.remove()
+          })
+        }
+      }
+
+      function showMessage(text, type) {
+        const messageDiv = document.getElementById('message')
+        messageDiv.className = `message ${type}`
+        messageDiv.textContent = text
+
+        setTimeout(() => {
+          messageDiv.className = ''
+          messageDiv.textContent = ''
+        }, 4000)
+      }
+
+      // Rendre les fonctions globales pour les onclick
+      window.authenticate = authenticate
+      window.toggleStatus = toggleStatus
+
+      // Permettre de soumettre avec Enter
+      document
+        .getElementById('passwordInput')
+        ?.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') authenticate()
+        })
+
+      // Charger l'état au démarrage
+      loadStatus()
+    </script>
+  </body>
+</html>
