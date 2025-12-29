@@ -1,4 +1,4 @@
-import { createSignal, For } from 'solid-js'
+import { createSignal, For, createEffect } from 'solid-js'
 import { resizeImage } from '../../../utils/image-resizer'
 
 interface FileItem {
@@ -9,6 +9,20 @@ interface FileItem {
 export default function Formulaire() {
   const [files, setFiles] = createSignal<FileItem[]>([])
   const max = 5
+  let hiddenInput: HTMLInputElement | undefined
+
+  // Mettre à jour la validité du champ quand les fichiers changent
+  createEffect(() => {
+    if (hiddenInput) {
+      if (files().length > 0) {
+        hiddenInput.value = 'valid'
+        hiddenInput.setCustomValidity('')
+      } else {
+        hiddenInput.value = ''
+        hiddenInput.setCustomValidity('Au moins une image est requise')
+      }
+    }
+  })
 
   const addImage = () => {
     if (files().length >= max) return
@@ -61,7 +75,9 @@ export default function Formulaire() {
 
   return (
     <div class="mt-4">
-      <label class="block font-semibold mb-2">Images (max 5)</label>
+      <label class="block font-semibold mb-2">
+        Images (max 5) <span class="text-red-500">*</span>
+      </label>
 
       <div class="flex flex-wrap gap-4">
         <For each={files()}>
@@ -100,13 +116,26 @@ export default function Formulaire() {
         </For>
 
         {files().length < max && (
-          <button
-            type="button"
-            onClick={addImage}
-            class="w-20 h-20 border-2 border-dashed border-gray-400 rounded-md flex items-center justify-center text-3xl hover:bg-gray-100"
-          >
-            +
-          </button>
+          <div class="relative w-20 h-20">
+            {/* Champ caché pour la validation HTML5 */}
+            <input
+              ref={hiddenInput}
+              type="text"
+              id="images-required"
+              name="images-required"
+              required
+              class="absolute inset-0 opacity-0 pointer-events-none"
+              tabindex="-1"
+              aria-hidden="true"
+            />
+            <button
+              type="button"
+              onClick={addImage}
+              class="w-20 h-20 border-2 border-dashed border-gray-400 rounded-md flex items-center justify-center text-3xl hover:bg-gray-100"
+            >
+              +
+            </button>
+          </div>
         )}
       </div>
     </div>
