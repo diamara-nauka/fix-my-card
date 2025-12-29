@@ -1,13 +1,20 @@
 import { getStore } from '@netlify/blobs'
+import { verifyToken } from './jwt-utils.js'
 
 export default async (req) => {
-  const { password, isOpen } = await req.json()
+  const { isOpen } = await req.json()
+  const authHeader = req.headers.get('Authorization')
 
-  if (password !== process.env.ADMIN_PASSWORD) {
-    return new Response(JSON.stringify({ error: 'Non autorisé' }), {
-      status: 401,
-      headers: { 'Content-Type': 'application/json' },
-    })
+  const { valid, error } = verifyToken(authHeader)
+
+  if (!valid) {
+    return new Response(
+      JSON.stringify({ error: error || 'Non autorisé' }),
+      {
+        status: 401,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
   }
 
   const store = getStore('orders')

@@ -18,10 +18,28 @@ export default function AdminToggle() {
     type: null,
   })
 
-  // Charger l'état au démarrage
+  // Charger l'état au démarrage et vérifier le token
   createEffect(() => {
     loadStatus()
+    checkTokenValidity()
   })
+
+  const checkTokenValidity = () => {
+    const token = localStorage.getItem('admin_token')
+    const expiry = localStorage.getItem('token_expiry')
+
+    if (token && expiry) {
+      const expiryTime = Number(expiry)
+      if (Date.now() < expiryTime) {
+        // Le token est encore valide
+        setIsAuthenticated(true)
+      } else {
+        // Le token a expiré
+        localStorage.removeItem('admin_token')
+        localStorage.removeItem('token_expiry')
+      }
+    }
+  }
 
   const loadStatus = async () => {
     try {
@@ -49,7 +67,7 @@ export default function AdminToggle() {
     setLoading(true)
 
     try {
-      const response = await fetch(basePath + '.netlify/functions/admin-auth', {
+      const response = await fetch(basePath + '.netlify/functions/jwt-login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: password() }),
@@ -58,7 +76,15 @@ export default function AdminToggle() {
       const data = await response.json()
 
       if (response.ok) {
+        // Stocker le token JWT dans localStorage
+        localStorage.setItem('admin_token', data.token)
+        localStorage.setItem(
+          'token_expiry',
+          String(Date.now() + data.expiresIn * 1000)
+        )
+
         setIsAuthenticated(true)
+        setPassword('') // Effacer le mot de passe de la mémoire
         showMessage('Connecté avec succès', 'success')
       } else {
         showMessage(data.error || 'Mot de passe incorrect', 'error')
@@ -76,6 +102,13 @@ export default function AdminToggle() {
       return
     }
 
+    const token = localStorage.getItem('admin_token')
+    if (!token) {
+      showMessage('Session expirée, reconnectez-vous', 'error')
+      setIsAuthenticated(false)
+      return
+    }
+
     setLoading(true)
 
     try {
@@ -83,8 +116,11 @@ export default function AdminToggle() {
         basePath + '.netlify/functions/toggle-status',
         {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ password: password(), isOpen: newStatus }),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ isOpen: newStatus }),
         }
       )
 
@@ -97,7 +133,15 @@ export default function AdminToggle() {
           'success'
         )
       } else {
-        showMessage(data.error || 'Erreur lors de la modification', 'error')
+        if (response.status === 401) {
+          // Token expiré ou invalide
+          showMessage('Session expirée, reconnectez-vous', 'error')
+          setIsAuthenticated(false)
+          localStorage.removeItem('admin_token')
+          localStorage.removeItem('token_expiry')
+        } else {
+          showMessage(data.error || 'Erreur lors de la modification', 'error')
+        }
       }
     } catch (error) {
       showMessage('Erreur lors de la modification', 'error')
