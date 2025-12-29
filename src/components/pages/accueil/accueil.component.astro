@@ -246,15 +246,10 @@ const techniques = await Promise.all(
           Redonnez vie<br class="lg:inline" />
           à vos cartes
         </h1>
-        <p
-          class="text-xl text-center lg:text-left mb-2 p-5 lg:p-0 animate-fade-in-up delay-200"
-        >
-          Restauration professionnelle de vos cartes : de l'usure à la splendeur
-        </p>
         <div
           class="w-[210px] h-[40px] flex justify-center lg:justify-start animate-fade-in-up delay-300"
         >
-          <OrderCheck client:visible />
+          <OrderCheck client:only="solid-js" />
         </div>
       </div>
     </div>

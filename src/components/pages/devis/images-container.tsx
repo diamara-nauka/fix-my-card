@@ -76,7 +76,7 @@ export default function Formulaire() {
   return (
     <div class="mt-4">
       <label class="block font-semibold mb-2">
-        Images (max 5) <span class="text-red-500">*</span>
+        Images (max 7) <span class="text-red-500">*</span>
       </label>
 
       <div class="flex flex-wrap gap-4">
