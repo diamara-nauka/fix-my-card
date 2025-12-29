@@ -1,9 +1,5 @@
 import { createMemo, createRoot, createSignal } from 'solid-js'
 import { fetchOrderStatus } from '../utils/order-status-api.ts'
-import {
-  getCachedOrderStatus,
-  setCachedOrderStatus,
-} from '../utils/order-status-cache.ts'
 
 export type OrderStatus = 'loading' | 'open' | 'closed' | 'error'
 
@@ -15,16 +11,8 @@ const loadOrderStatus = async (): Promise<void> => {
     return
   }
 
-  const cached = getCachedOrderStatus()
-  if (cached) {
-    setOrderStatus(cached.isOpen ? 'open' : 'closed')
-    setIsInitialized(true)
-    return
-  }
-
   try {
     const data = await fetchOrderStatus()
-    setCachedOrderStatus(data)
     setOrderStatus(data.isOpen ? 'open' : 'closed')
     setIsInitialized(true)
   } catch (error) {
