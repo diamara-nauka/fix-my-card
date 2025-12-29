@@ -11,7 +11,9 @@
     "prod": "npm run build && netlify dev --dir=dist --context production"
   },
   "dependencies": {
+    "@netlify/blobs": "^10.5.0",
     "busboy": "^1.6.0",
+    "jsonwebtoken": "^9.0.3",
     "mime-types": "^3.0.2",
     "nodemailer": "^7.0.11"
   },
@@ -22,6 +24,7 @@
     "@astrojs/tailwind": "^6.0.2",
     "@netlify/functions": "^5.1.0",
     "@types/busboy": "^1.5.4",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/mime-types": "^3.0.1",
     "@types/node": "^24.10.1",
     "@types/nodemailer": "^7.0.4",

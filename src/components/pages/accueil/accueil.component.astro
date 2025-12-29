@@ -1,5 +1,6 @@
 ---
 import Sparkles from '../../../assets/sparkles.svg'
+import CheckCircle from '../../../assets/circle-check.svg'
 import RaichuCorrection from '../../../assets/accueil/raichu-correction.jpg'
 import RaichuFinition from '../../../assets/accueil/raichu-finition.jpg'
 import RaichuNettoyage from '../../../assets/accueil/raichu-nettoyage.jpg'
@@ -14,11 +15,8 @@ import tcgDevicesBgPatternSrc from '../../../assets/accueil/tcg-devices-bg-patte
 import ShinyPokeball from '../../../assets/accueil/shiny-pokeball.png'
 import Masterball from '../../../assets/accueil/masterball.png'
 import LoveBall from '../../../assets/accueil/loveball.png'
-import LpGood from '../../../assets/accueil/lp_good_icon.png'
-import NoteUp from '../../../assets/accueil/note_up.png'
-import ClasseurClean from '../../../assets/accueil/classeur_clean.png'
-import OrderCheck from './order-check.tsx'
 import { Image, getImage } from 'astro:assets'
+import OrderCheck from './order-check.tsx'
 import ImageModal from './image-modal.tsx'
 
 const pokePattern = await getImage({
@@ -95,18 +93,12 @@ const techniquesImages = [
 const cards = [
   {
     title: 'Amélioration de l’état global de la carte',
-    img: LpGood,
-    width: 64,
   },
   {
     title: 'Revalorisation de la carte',
-    img: NoteUp,
-    width: 48,
   },
   {
     title: 'Entretien d’une collection',
-    img: ClasseurClean,
-    width: 64,
   },
 ]
 
@@ -254,15 +246,10 @@ const techniques = await Promise.all(
           Redonnez vie<br class="lg:inline" />
           à vos cartes
         </h1>
-        <p
-          class="text-xl text-center lg:text-left mb-2 p-5 lg:p-0 animate-fade-in-up delay-200"
-        >
-          Restauration professionnelle de vos cartes : de l'usure à la splendeur
-        </p>
         <div
           class="w-[210px] h-[40px] flex justify-center lg:justify-start animate-fade-in-up delay-300"
         >
-          <OrderCheck client:visible />
+          <OrderCheck client:only="solid-js" />
         </div>
       </div>
     </div>
@@ -398,20 +385,9 @@ const techniques = await Promise.all(
             <ul class="space-y-3">
               {
                 cards.map((card) => (
-                  <li class="flex items-center gap-3 h-[48px]">
-                    <div class="flex flex-row items-center text-gray-700">
-                      <div class="min-w-20 flex items-center justify-center">
-                        <Image
-                          loading="lazy"
-                          src={card.img}
-                          alt=""
-                          width={card.width}
-                          quality={80}
-                          format="webp"
-                        />
-                      </div>
-                      <p>{card.title}</p>
-                    </div>
+                  <li class="flex items-start gap-3">
+                    <CheckCircle class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
+                    <span class="text-gray-700">{card.title}</span>
                   </li>
                 ))
               }
@@ -598,7 +574,7 @@ const techniques = await Promise.all(
       class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10"
     >
       <div class="scroll-reveal">
-        <Sparkles class="w-16 h-16 mx-auto mb-6 animate-pulse animate-float" />
+        <Sparkles class="w-16 h-16 mx-auto mb-6 animate-float" />
         <h2 class="text-5xl mb-6">Prêt à redonner vie à vos cartes ?</h2>
         <p class="text-xl mb-10 text-purple-100 leading-relaxed">
           Chaque restauration commence par une conversation. Parlez-nous de vos

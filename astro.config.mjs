@@ -5,5 +5,11 @@ import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
   site: 'https://fixmycard.fr',
-  integrations: [solid(), tailwind(), sitemap()],
+  integrations: [
+    solid(),
+    tailwind(),
+    sitemap({
+      filter: (page) => page !== 'https://fixmycard.fr/admin',
+    }),
+  ],
 })

@@ -4,9 +4,9 @@ import FormSubmitHandler from './form-submit-handler.tsx'
 import OrderStatusChecker from './order-status-checker.tsx'
 ---
 
-<div class="container mx-auto px-4 xl:px-80 py-8 pt-28 min-h-full">
+<div class="container mx-auto px-4 xl:px-80 py-8 pt-6 min-h-full">
   <h1 class="text-3xl font-bold mb-6">Contactez-moi</h1>
-  <OrderStatusChecker client:idle>
+  <OrderStatusChecker client:only="solid-js">
     <p class="mb-6">
       Je vous ferais parvenir un devis dans les plus brefs délais
     </p>
@@ -21,7 +21,9 @@ import OrderStatusChecker from './order-status-checker.tsx'
       <input type="hidden" name="form-name" value="contact" />
 
       <div>
-        <label for="name" class="block mb-2 font-semibold">Nom</label>
+        <label for="name" class="block mb-2 font-semibold"
+          >Nom/Prénom<span class="text-red-500">*</span></label
+        >
         <input
           type="text"
           id="name"
@@ -33,7 +35,9 @@ import OrderStatusChecker from './order-status-checker.tsx'
       </div>
 
       <div>
-        <label for="email" class="block mb-2 font-semibold">Email</label>
+        <label for="email" class="block mb-2 font-semibold"
+          >Email <span class="text-red-500">*</span></label
+        >
         <input
           type="email"
           id="email"
@@ -45,7 +49,9 @@ import OrderStatusChecker from './order-status-checker.tsx'
       </div>
 
       <div>
-        <label for="adresse" class="block mb-2 font-semibold">Adresse</label>
+        <label for="adresse" class="block mb-2 font-semibold"
+          >Adresse <span class="text-red-500">*</span></label
+        >
         <input
           type="text"
           id="adresse"
@@ -57,7 +63,7 @@ import OrderStatusChecker from './order-status-checker.tsx'
       </div>
       <div>
         <label for="codePostal" class="block mb-2 font-semibold">
-          Code Postal
+          Code Postal <span class="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -72,7 +78,9 @@ import OrderStatusChecker from './order-status-checker.tsx'
       </div>
 
       <div>
-        <label for="ville" class="block mb-2 font-semibold">Ville</label>
+        <label for="ville" class="block mb-2 font-semibold"
+          >Ville <span class="text-red-500">*</span></label
+        >
         <input
           type="text"
           id="ville"
@@ -84,7 +92,9 @@ import OrderStatusChecker from './order-status-checker.tsx'
       </div>
 
       <div>
-        <label for="message" class="block mb-2 font-semibold">Message</label>
+        <label for="message" class="block mb-2 font-semibold"
+          >Message <span class="text-red-500">*</span></label
+        >
         <textarea
           id="message"
           name="message"
@@ -115,7 +125,7 @@ import OrderStatusChecker from './order-status-checker.tsx'
           class="flex items-center h-5 text-sm text-gray-700 cursor-pointer
           select-none"
         >
-          J'atteste de l'exactitude des informations soumises <span
+          J'atteste de l'exactitude des informations soumises&nbsp;<span
             class="text-red-500">*</span
           >
         </label>
