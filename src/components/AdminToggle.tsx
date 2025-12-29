@@ -25,7 +25,9 @@ export default function AdminToggle() {
 
   const loadStatus = async () => {
     try {
-      const response = await fetch(basePath + '.netlify/functions/get-status')
+      const response = await fetch(
+        basePath + '.netlify/functions/get-status-no-cache'
+      )
       const data = await response.json()
       setIsOpen(data.isOpen)
     } catch (error) {
