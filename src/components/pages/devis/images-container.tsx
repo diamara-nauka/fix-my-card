@@ -106,7 +106,7 @@ export default function Formulaire() {
               {/* Supprimer */}
               <button
                 type="button"
-                class="absolute top-0 right-0 bg-black/60 text-white px-1 text-sm opacity-0 group-hover:opacity-100"
+                class="absolute w-5 h-5 top-0 right-0 bg-black/60 text-white px-1 text-sm opacity-100"
                 onClick={() => removeImage(index())}
               >
                 ×
