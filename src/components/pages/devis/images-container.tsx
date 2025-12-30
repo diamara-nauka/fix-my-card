@@ -79,8 +79,7 @@ export default function Formulaire() {
         Images (max 7) <span class="text-red-500">*</span>
         <br />
         <i class="text-gray-500 text-base">
-          Prendre vos photos des cartes sur fond noir avec flash sans sleeve si
-          possible
+          Privilégiez les photos avec flash, sur fond sombre, sans sleeve
         </i>
       </label>
 
