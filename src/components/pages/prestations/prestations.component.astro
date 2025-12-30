@@ -3,6 +3,7 @@ import Minidraco from '../../../assets/minidraco_blue.png'
 import Draco from '../../../assets/draco_blue.png'
 import Dracolosse from '../../../assets/dracoloss_blue.png'
 import CircleCheck from '../../../assets/circle-check.svg'
+import LoveBall from '../../../assets/accueil/loveball.png'
 import { Image } from 'astro:assets'
 
 const services = [
@@ -163,6 +164,50 @@ const processes = [
             </div>
           ))
         }
+      </div>
+    </div>
+
+    <div
+      class="bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg p-8 mb-12 text-white overflow-hidden relative shadow-lg"
+    >
+      <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+        <div class="flex-shrink-0 animate-float">
+          <Image
+            src={LoveBall}
+            quality={90}
+            alt="Love Ball"
+            width={160}
+            height={160}
+            format="webp"
+            class="w-32 h-32 md:w-40 md:h-40 drop-shadow-2xl"
+          />
+        </div>
+        <div class="flex-1 text-center md:text-left">
+          <h2 class="text-3xl font-bold mb-4">Programme de Fidélité</h2>
+          <p class="text-lg text-pink-50 mb-6 max-w-2xl">
+            Pour récompenser votre confiance, profitez de notre programme de
+            fidélité exclusif. Chaque commande vous rapproche de récompenses
+            uniques !
+          </p>
+          <ul class="space-y-3 inline-block text-left">
+            <li class="flex items-center gap-3">
+              <div class="bg-white/20 p-1.5 rounded-full">
+                <CircleCheck class="w-5 h-5 text-white" />
+              </div>
+              <span class="font-medium"
+                >Cumulez des points à chaque restauration</span
+              >
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="bg-white/20 p-1.5 rounded-full">
+                <CircleCheck class="w-5 h-5 text-white" />
+              </div>
+              <span class="font-medium"
+                >Débloquez des remises sur vos prochaines commandes</span
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
