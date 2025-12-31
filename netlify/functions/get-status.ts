@@ -2,7 +2,7 @@ import { getStore } from '@netlify/blobs'
 
 export default async () => {
   const store = getStore('orders')
-  const isOpen = (await store.get('isOpen')) === 'true'
+  const isOpen = (await store.get('isOpen', { type: 'text' })) === 'true'
 
   return new Response(JSON.stringify({ isOpen }), {
     headers: {

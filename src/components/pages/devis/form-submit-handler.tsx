@@ -130,7 +130,7 @@ export default function FormSubmitHandler() {
                   <li>Réessayez avec des images de taille réduite</li>
                   <li>Vérifiez votre connexion</li>
                   <li>
-                    Contactez-nous directement par email si le problème persiste
+                    Contactez-moi directement par email si le problème persiste
                   </li>
                 </ul>
               </div>

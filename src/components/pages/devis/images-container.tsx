@@ -77,6 +77,10 @@ export default function Formulaire() {
     <div class="mt-4">
       <label class="block font-semibold mb-2">
         Images (max 7) <span class="text-red-500">*</span>
+        <br />
+        <i class="text-gray-500 text-base">
+          Privilégiez les photos avec flash, sur fond sombre, sans sleeve
+        </i>
       </label>
 
       <div class="flex flex-wrap gap-4">
