@@ -80,6 +80,20 @@ import FormSubmitHandler from './form-submit-handler.tsx'
       </div>
 
       <div>
+        <label for="phone" class="block mb-2 font-semibold"
+          >Téléphone <span class="text-red-500">*</span></label
+        >
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md
+          focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div>
         <label for="adresse" class="block mb-2 font-semibold"
           >Adresse <span class="text-red-500">*</span></label
         >
