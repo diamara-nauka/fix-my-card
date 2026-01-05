@@ -22,6 +22,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
   const fields: {
     name?: string
     email?: string
+    phone?: string
     adresse?: string
     codePostal?: string
     ville?: string
@@ -85,6 +86,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
           text: `
 Nom : ${fields.name || 'N/A'}
 Email : ${fields.email || 'N/A'}
+Téléphone : ${fields.phone || 'N/A'}
 Adresse : ${fields.adresse || 'N/A'}
 Code Postal : ${fields.codePostal || 'N/A'}
 Ville : ${fields.ville || 'N/A'}

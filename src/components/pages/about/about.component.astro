@@ -1,6 +1,8 @@
 ---
 import Bureau from '../../../assets/about/bureau.jpg'
 import { Image } from 'astro:assets'
+import Mail from '../../../assets/footer/mail.svg'
+import Phone from '../../../assets/footer/phone.svg'
 ---
 
 <div class="py-12">
@@ -24,17 +26,17 @@ import { Image } from 'astro:assets'
       </div>
       <div>
         <h2 class="text-3xl mb-4 text-gray-900">Mon histoire</h2>
-        <div class="space-y-4 text-gray-700">
+        <div class="space-y-4 text-gray-700 text-justify">
           <p>
             Bonjour à toutes et à tous ! Je m’appelle Charlotte Vandenbroucke,
-            j'ai commencé à collectionner les cartes pokémon en 2008, j'ai donc
-            connue comme beaucoup d’entre vous la cour de récréation où les
-            cartes pokémon s'échangeaient et étaient même parfois interdites.
+            j'ai commencé à collectionner les cartes Pokémon en 2008, j'ai donc
+            connu comme beaucoup d’entre vous la cour de récréation où les
+            cartes Pokémon s'échangeaient et étaient même parfois interdites.
           </p>
           <p>
             Et ce qu’on peut dire c'est qu'à cette époque beaucoup d'entre nous
-            ne prenait pas soin de leurs classeurs, les cartes ont souvent vu du
-            gravier, des mains pas très propres et des manipulations très peu
+            ne prenaient pas soin de leurs classeurs, les cartes ont souvent vu
+            du gravier, des mains pas très propres et des manipulations très peu
             délicates.
           </p>
           <p>
@@ -48,12 +50,12 @@ import { Image } from 'astro:assets'
             Puis j'ai acheté des cartes à l'unité que ça soit en japonais ou en
             français, et un jour après avoir acheté une carte un ami me l'a
             abîmée en essayant de la restaurer, c'était la carte de mes rêves.
-            J'étais extrêmement triste et démunie, je ne savais pas qui vers me
-            tourner où s'il existait vraiment une solution ?
+            J'étais extrêmement triste et démunie, je ne savais pas vers qui me
+            tourner ou s'il existait vraiment une solution ?
           </p>
           <p>
             Les prestations de restaurations de cartes sont souvent onéreuses
-            alors j'ai décidé de le faire moi même. C’était une occasion
+            alors j'ai décidé de le faire moi-même. C’était une occasion
             d'ouvrir une porte alors encore jamais explorée. D'une carte abîmée
             est née une envie, l'améliorer pour tenter de retrouver son état
             initial, préserver l'émotion qu’elle renferme. Tout bon
@@ -63,8 +65,8 @@ import { Image } from 'astro:assets'
           </p>
           <p>
             Aujourd'hui je restaure les cartes de ma collection, celles de mes
-            amis et c’est pour ça que j'ai créée Fix My Card, l'objectif étant
-            de prendre soin de vos cartes de collection, et ainsi préserver ces
+            amis et c’est pour ça que j'ai créé Fix My Card, l'objectif étant de
+            prendre soin de vos cartes de collection, et ainsi préserver ces
             émotions qui nous sont si chères, celles pour lesquelles nous
             continuons à être passionnés.
           </p>
@@ -81,9 +83,18 @@ import { Image } from 'astro:assets'
         <p class="text-xl text-blue-100 mb-6">
           N'hésitez pas à me contacter pour discuter de votre projet
         </p>
-        <div class="space-y-2">
-          <p class="text-xl">📧 fixmycard34@gmail.com</p>
-          <p class="text-xl">📞 +33 6 99 75 74 26</p>
+        <div class="space-y-2 flex flex-col items-center justify-center">
+          <p class="text-xl flex flex-row items-center justify-center">
+            <Mail
+              height="18"
+              width="18"
+              aria-hidden="true"
+            />&nbsp;fixmycard34@gmail.com
+          </p>
+          <p class="text-xl flex flex-row items-center justify-center">
+            <Phone height="18" width="18" aria-hidden="true" />&nbsp;+33 6 99 75
+            74 26
+          </p>
         </div>
       </div>
     </div>

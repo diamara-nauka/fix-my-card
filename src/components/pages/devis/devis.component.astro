@@ -1,14 +1,45 @@
 ---
 import ImageContainer from './images-container.tsx'
 import FormSubmitHandler from './form-submit-handler.tsx'
-import OrderStatusChecker from './order-status-checker.tsx'
 ---
 
 <div class="container mx-auto px-4 xl:px-80 py-8 pt-6 min-h-full">
   <h1 class="text-3xl font-bold mb-6">Contactez-moi</h1>
-  <OrderStatusChecker client:only="solid-js">
+  <div id="status-loading" class="flex items-center gap-3 text-gray-600">
+    <svg
+      class="animate-spin h-5 w-5"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"></circle>
+      <path
+        class="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      ></path>
+    </svg>
+    <p>Vérification de la disponibilité...</p>
+  </div>
+
+  <div
+    id="status-closed"
+    class="hidden bg-yellow-50 border border-yellow-200 rounded-lg p-6"
+  >
+    <p class="text-lg text-yellow-800">
+      Les commandes sont actuellement fermées. Veuillez revenir plus tard.
+    </p>
+  </div>
+
+  <div id="status-open" class="hidden">
     <p class="mb-6">
-      Je vous ferais parvenir un devis dans les plus brefs délais
+      Je vous ferai parvenir un devis dans les plus brefs délais
     </p>
 
     <form
@@ -49,6 +80,20 @@ import OrderStatusChecker from './order-status-checker.tsx'
       </div>
 
       <div>
+        <label for="phone" class="block mb-2 font-semibold"
+          >Téléphone <span class="text-red-500">*</span></label
+        >
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md
+          focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div>
         <label for="adresse" class="block mb-2 font-semibold"
           >Adresse <span class="text-red-500">*</span></label
         >
@@ -63,7 +108,7 @@ import OrderStatusChecker from './order-status-checker.tsx'
       </div>
       <div>
         <label for="codePostal" class="block mb-2 font-semibold">
-          Code Postal <span class="text-red-500">*</span>
+          Code postal <span class="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -147,5 +192,36 @@ import OrderStatusChecker from './order-status-checker.tsx'
 
       <FormSubmitHandler client:idle />
     </form>
-  </OrderStatusChecker>
+  </div>
 </div>
+
+<script>
+  const checkStatus = async () => {
+    const loadingDiv = document.getElementById('status-loading')
+    const openDiv = document.getElementById('status-open')
+    const closedDiv = document.getElementById('status-closed')
+
+    if (!loadingDiv || !openDiv || !closedDiv) return
+
+    try {
+      const response = await fetch('/.netlify/functions/get-status')
+
+      if (response.ok) {
+        const data = await response.json()
+        if (data.isOpen) {
+          openDiv.classList.remove('hidden')
+        } else {
+          closedDiv.classList.remove('hidden')
+        }
+      } else {
+        closedDiv.classList.remove('hidden')
+      }
+    } catch (e) {
+      closedDiv.classList.remove('hidden')
+    } finally {
+      loadingDiv.classList.add('hidden')
+    }
+  }
+
+  document.addEventListener('astro:page-load', checkStatus)
+</script>
