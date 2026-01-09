@@ -5,6 +5,7 @@ User-agent: *
 Allow: /
 
 Disallow: /admin
+Disallow: /merci
 Sitemap: ${sitemapURL.href}
 `
 

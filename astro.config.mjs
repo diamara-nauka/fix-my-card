@@ -9,7 +9,9 @@ export default defineConfig({
     solid(),
     tailwind(),
     sitemap({
-      filter: (page) => page !== 'https://fixmycard.fr/admin',
+      filter: (page) =>
+        page !== 'https://fixmycard.fr/admin/' &&
+        page !== 'https://fixmycard.fr/merci/',
     }),
   ],
 })
