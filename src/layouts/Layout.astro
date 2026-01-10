@@ -62,6 +62,19 @@ const ogImage = new URL('/fix-my-card.webp', Astro.site)
     <meta name="msvalidate.01" content="F0A399999C4F8A3560785AB44DBC07E1" />
     <title>{title}</title>
     <ClientRouter />
+
+    <!-- Script pour gérer page_view Astro + ClientRouter -->
+    <script>
+      document.addEventListener('astro:page-load', () => {
+        window.dataLayer = window.dataLayer || []
+        window.dataLayer.push({
+          event: 'astro_page_view',
+          page_path: location.pathname + location.search,
+          page_location: location.href,
+          page_title: document.title,
+        })
+      })
+    </script>
   </head>
   <body class="m-0 w-full h-full overflow-hidden">
     <!-- Google Tag Manager (noscript) -->
